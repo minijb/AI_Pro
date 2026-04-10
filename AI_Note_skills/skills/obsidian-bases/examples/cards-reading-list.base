@@ -1,0 +1,72 @@
+# Reading List (Cards View)
+#
+# A gallery-style reading list with cover images.
+#
+# Prerequisites: Notes should have these frontmatter properties:
+#   - cover: text (wiki link to image, e.g., "[[covers/book1.jpg]]")
+#   - author: text
+#   - rating: number (1-5)
+#   - status: text (e.g., "To Read", "Reading", "Finished")
+#   - genre: text
+#   - tags: should include "book"
+
+filters:
+  and:
+    - file.hasTag("book")
+
+formulas:
+  stars: 'if(rating, "★".repeat(rating), "")'
+  display_info: 'if(author, author, "") + if(rating, " · " + "★".repeat(rating), "")'
+
+properties:
+  author:
+    displayName: Author
+  rating:
+    displayName: Rating
+  status:
+    displayName: Status
+  genre:
+    displayName: Genre
+  formula.stars:
+    displayName: Stars
+  formula.display_info:
+    displayName: Info
+
+views:
+  - type: cards
+    name: "Library"
+    order:
+      - file.name
+      - note.author
+      - formula.stars
+      - note.status
+    groupBy:
+      property: note.status
+      direction: ASC
+
+  - type: cards
+    name: "By Genre"
+    groupBy:
+      property: note.genre
+      direction: ASC
+    order:
+      - file.name
+      - note.author
+      - formula.stars
+
+  - type: table
+    name: "Ratings"
+    order:
+      - file.name
+      - note.author
+      - note.rating
+      - note.genre
+      - note.status
+    summaries:
+      note.rating: Average
+
+# Note: Set "Image property" to "cover" in the Cards view settings UI.
+# Image fit: "cover" for uniform sizing, "contain" to show full cover.
+
+# Source: https://obsidian.md/help/bases/views/cards
+# Source: https://obsidian.md/help/bases/syntax

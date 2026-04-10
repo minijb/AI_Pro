@@ -1,0 +1,104 @@
+{
+	"nodes": [
+		{
+			"id": "b1b2c3d4e5f60001",
+			"type": "group",
+			"x": -80,
+			"y": -80,
+			"width": 960,
+			"height": 480,
+			"label": "Project Documentation"
+		},
+		{
+			"id": "b1b2c3d4e5f60002",
+			"type": "file",
+			"x": 0,
+			"y": 0,
+			"width": 400,
+			"height": 350,
+			"file": "Projects/Project Overview.md",
+			"color": "4"
+		},
+		{
+			"id": "b1b2c3d4e5f60003",
+			"type": "file",
+			"x": 480,
+			"y": 0,
+			"width": 380,
+			"height": 200,
+			"file": "Projects/Project Overview.md",
+			"subpath": "#Architecture"
+		},
+		{
+			"id": "b1b2c3d4e5f60004",
+			"type": "file",
+			"x": 480,
+			"y": 250,
+			"width": 380,
+			"height": 100,
+			"file": "Assets/diagram.png"
+		},
+		{
+			"id": "b1b2c3d4e5f60005",
+			"type": "file",
+			"x": 0,
+			"y": 500,
+			"width": 400,
+			"height": 300,
+			"file": "Resources/API Reference.pdf"
+		},
+		{
+			"id": "b1b2c3d4e5f60006",
+			"type": "link",
+			"x": 480,
+			"y": 500,
+			"width": 400,
+			"height": 300,
+			"url": "https://docs.example.com/api/v2"
+		},
+		{
+			"id": "b1b2c3d4e5f60007",
+			"type": "text",
+			"x": 0,
+			"y": 860,
+			"width": 880,
+			"height": 100,
+			"text": "## Notes\n\n- File nodes show inline previews for images and PDFs\n- `subpath` links to a specific heading or block within a note\n- Link nodes render web pages as iframes (Ctrl/Cmd+click to open in browser)",
+			"color": "3"
+		}
+	],
+	"edges": [
+		{
+			"id": "eb1b2c3d4e5f60001",
+			"fromNode": "b1b2c3d4e5f60002",
+			"fromSide": "right",
+			"toNode": "b1b2c3d4e5f60003",
+			"toSide": "left",
+			"label": "section detail"
+		},
+		{
+			"id": "eb1b2c3d4e5f60002",
+			"fromNode": "b1b2c3d4e5f60003",
+			"fromSide": "bottom",
+			"toNode": "b1b2c3d4e5f60004",
+			"toSide": "top"
+		},
+		{
+			"id": "eb1b2c3d4e5f60003",
+			"fromNode": "b1b2c3d4e5f60002",
+			"fromSide": "bottom",
+			"toNode": "b1b2c3d4e5f60005",
+			"toSide": "top",
+			"label": "reference"
+		},
+		{
+			"id": "eb1b2c3d4e5f60004",
+			"fromNode": "b1b2c3d4e5f60005",
+			"fromSide": "right",
+			"toNode": "b1b2c3d4e5f60006",
+			"toSide": "left",
+			"label": "online version",
+			"color": "5"
+		}
+	]
+}

@@ -1,0 +1,35 @@
+# Simple Note List (List View)
+#
+# A filtered list of notes from a specific folder, displayed as bullets.
+#
+# Prerequisites: Notes in the "Journal" folder (or change the folder filter).
+
+filters:
+  and:
+    - file.inFolder("Journal")
+
+formulas:
+  modified_ago: "file.mtime.relative()"
+
+properties:
+  formula.modified_ago:
+    displayName: Last Modified
+
+views:
+  - type: list
+    name: "Recent Journal Entries"
+    order:
+      - file.name
+      - formula.modified_ago
+    filters:
+      and:
+        - 'file.mtime > now() - "30d"'
+
+  - type: list
+    name: "All Entries"
+    order:
+      - file.name
+      - file.mtime
+
+# Source: https://obsidian.md/help/bases/views/list
+# Source: https://obsidian.md/help/bases/syntax

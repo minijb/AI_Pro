@@ -1,0 +1,23 @@
+{
+  "permissions": {
+    "allow": [
+      "WebSearch",
+      "WebFetch(domain:github.com)",
+      "WebFetch(domain:help.obsidian.md)",
+      "WebFetch(domain:obsidian.md)",
+      "WebFetch(domain:publish-01.obsidian.md)",
+      "Bash(find \"D:/Project/AI_Note/obsidian-markdown/examples\" -name \"*.md\" -exec wc -l {} \\\\;)",
+      "Bash(find \"D:/Project/AI_Note/obsidian-markdown/examples\" -name \"*.md\" -exec wc -l {} +)",
+      "Bash(mv advanced/footnotes-comments-html.md .)",
+      "Bash(mv basic-formatting/text-and-headings.md .)",
+      "Bash(mv callouts/callouts.md .)",
+      "Bash(mv code-and-math/code-and-math.md .)",
+      "Bash(mv diagrams/mermaid-diagrams.md .)",
+      "Bash(python -m scripts.quick_validate \"D:/AI Project/AI_Note_skills/skills/emmylua-annotation\")",
+      "Bash(python -m scripts.quick_validate \"D:/AI Project/AI_Note_skills/skills/obsidian-bases\")",
+      "Bash(python -m scripts.quick_validate \"D:/AI Project/AI_Note_skills/skills/obsidian-markdown\")",
+      "Bash(python -m scripts.quick_validate \"D:/AI Project/AI_Note_skills/skills/skill-creator\")"
+    ]
+  },
+  "skipWebFetchPreflight": true
+}
