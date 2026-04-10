@@ -16,7 +16,12 @@
       "Bash(python -m scripts.quick_validate \"D:/AI Project/AI_Note_skills/skills/emmylua-annotation\")",
       "Bash(python -m scripts.quick_validate \"D:/AI Project/AI_Note_skills/skills/obsidian-bases\")",
       "Bash(python -m scripts.quick_validate \"D:/AI Project/AI_Note_skills/skills/obsidian-markdown\")",
-      "Bash(python -m scripts.quick_validate \"D:/AI Project/AI_Note_skills/skills/skill-creator\")"
+      "Bash(python -m scripts.quick_validate \"D:/AI Project/AI_Note_skills/skills/skill-creator\")",
+      "WebFetch(domain:raw.githubusercontent.com)",
+      "Bash(mkdir -p /home/zhouhao/project/AI_Pro/AI_Note_skills/.claude/skills)",
+      "Bash(cp -r /home/zhouhao/.claude/skills/skill-creator /home/zhouhao/project/AI_Pro/AI_Note_skills/.claude/skills/)",
+      "Bash(gh api:*)",
+      "Bash(python3:*)"
     ]
   },
   "skipWebFetchPreflight": true

@@ -1,7 +1,7 @@
 {
 	"nodes": [
 		{
-			"id": "b1b2c3d4e5f60001",
+			"id": "vlte000node00000",
 			"type": "group",
 			"x": -80,
 			"y": -80,
@@ -10,7 +10,7 @@
 			"label": "Project Documentation"
 		},
 		{
-			"id": "b1b2c3d4e5f60002",
+			"id": "vlte001node00001",
 			"type": "file",
 			"x": 0,
 			"y": 0,
@@ -20,7 +20,7 @@
 			"color": "4"
 		},
 		{
-			"id": "b1b2c3d4e5f60003",
+			"id": "vlte002node00002",
 			"type": "file",
 			"x": 480,
 			"y": 0,
@@ -30,16 +30,16 @@
 			"subpath": "#Architecture"
 		},
 		{
-			"id": "b1b2c3d4e5f60004",
+			"id": "vlte003node00003",
 			"type": "file",
 			"x": 480,
-			"y": 250,
+			"y": 240,
 			"width": 380,
 			"height": 100,
 			"file": "Assets/diagram.png"
 		},
 		{
-			"id": "b1b2c3d4e5f60005",
+			"id": "vlte004node00004",
 			"type": "file",
 			"x": 0,
 			"y": 500,
@@ -48,7 +48,7 @@
 			"file": "Resources/API Reference.pdf"
 		},
 		{
-			"id": "b1b2c3d4e5f60006",
+			"id": "vlte005node00005",
 			"type": "link",
 			"x": 480,
 			"y": 500,
@@ -57,7 +57,7 @@
 			"url": "https://docs.example.com/api/v2"
 		},
 		{
-			"id": "b1b2c3d4e5f60007",
+			"id": "vlte006node00006",
 			"type": "text",
 			"x": 0,
 			"y": 860,
@@ -69,33 +69,33 @@
 	],
 	"edges": [
 		{
-			"id": "eb1b2c3d4e5f60001",
-			"fromNode": "b1b2c3d4e5f60002",
+			"id": "vlte000edge00000",
+			"fromNode": "vlte001node00001",
+			"toNode": "vlte002node00002",
 			"fromSide": "right",
-			"toNode": "b1b2c3d4e5f60003",
 			"toSide": "left",
 			"label": "section detail"
 		},
 		{
-			"id": "eb1b2c3d4e5f60002",
-			"fromNode": "b1b2c3d4e5f60003",
+			"id": "vlte001edge00001",
+			"fromNode": "vlte002node00002",
+			"toNode": "vlte003node00003",
 			"fromSide": "bottom",
-			"toNode": "b1b2c3d4e5f60004",
 			"toSide": "top"
 		},
 		{
-			"id": "eb1b2c3d4e5f60003",
-			"fromNode": "b1b2c3d4e5f60002",
+			"id": "vlte002edge00002",
+			"fromNode": "vlte001node00001",
+			"toNode": "vlte004node00004",
 			"fromSide": "bottom",
-			"toNode": "b1b2c3d4e5f60005",
 			"toSide": "top",
 			"label": "reference"
 		},
 		{
-			"id": "eb1b2c3d4e5f60004",
-			"fromNode": "b1b2c3d4e5f60005",
+			"id": "vlte003edge00003",
+			"fromNode": "vlte004node00004",
+			"toNode": "vlte005node00005",
 			"fromSide": "right",
-			"toNode": "b1b2c3d4e5f60006",
 			"toSide": "left",
 			"label": "online version",
 			"color": "5"

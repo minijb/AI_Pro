@@ -1,7 +1,7 @@
 {
 	"nodes": [
 		{
-			"id": "d1b2c3d4e5f60001",
+			"id": "lgrd000node00000",
 			"type": "group",
 			"x": -40,
 			"y": -40,
@@ -11,7 +11,7 @@
 			"color": "3"
 		},
 		{
-			"id": "d1b2c3d4e5f60002",
+			"id": "lgrd001node00001",
 			"type": "group",
 			"x": 420,
 			"y": -40,
@@ -21,7 +21,7 @@
 			"color": "2"
 		},
 		{
-			"id": "d1b2c3d4e5f60003",
+			"id": "lgrd002node00002",
 			"type": "group",
 			"x": 880,
 			"y": -40,
@@ -31,34 +31,49 @@
 			"color": "4"
 		},
 		{
-			"id": "d1b2c3d4e5f60010",
+			"id": "lgrd003node00003",
+			"type": "group",
+			"x": 1340,
+			"y": -40,
+			"width": 380,
+			"height": 400,
+			"label": "Archive (background demo)",
+			"background": "Assets/paper-texture.png",
+			"backgroundStyle": "cover",
+			"color": "6"
+		},
+		{
+			"id": "lgrd004node00004",
 			"type": "text",
 			"x": 0,
 			"y": 0,
 			"width": 300,
 			"height": 140,
-			"text": "## User Authentication\n\n- OAuth2 integration\n- Session management\n- Password reset flow"
+			"text": "## User Authentication\n\n- OAuth2 integration\n- Session management\n- Password reset flow",
+			"color": "1"
 		},
 		{
-			"id": "d1b2c3d4e5f60011",
+			"id": "lgrd005node00005",
 			"type": "text",
 			"x": 0,
-			"y": 220,
+			"y": 200,
 			"width": 300,
 			"height": 120,
-			"text": "## API Rate Limiting\n\n- Token bucket algorithm\n- Per-user quotas"
+			"text": "## API Rate Limiting\n\n- Token bucket algorithm\n- Per-user quotas",
+			"color": "1"
 		},
 		{
-			"id": "d1b2c3d4e5f60012",
+			"id": "lgrd006node00006",
 			"type": "text",
 			"x": 0,
-			"y": 440,
+			"y": 400,
 			"width": 300,
 			"height": 120,
-			"text": "## Dark Mode Support\n\n- CSS variables\n- System preference detection"
+			"text": "## Dark Mode Support\n\n- CSS variables\n- System preference detection",
+			"color": "1"
 		},
 		{
-			"id": "d1b2c3d4e5f60020",
+			"id": "lgrd007node00007",
 			"type": "text",
 			"x": 460,
 			"y": 0,
@@ -68,17 +83,17 @@
 			"color": "2"
 		},
 		{
-			"id": "d1b2c3d4e5f60021",
+			"id": "lgrd008node00008",
 			"type": "file",
 			"x": 460,
-			"y": 240,
+			"y": 180,
 			"width": 300,
 			"height": 200,
 			"file": "Projects/Sprint 23/migration-plan.md",
 			"subpath": "#Timeline"
 		},
 		{
-			"id": "d1b2c3d4e5f60030",
+			"id": "lgrd009node00009",
 			"type": "text",
 			"x": 920,
 			"y": 0,
@@ -88,7 +103,7 @@
 			"color": "4"
 		},
 		{
-			"id": "d1b2c3d4e5f60031",
+			"id": "lgrd010node00010",
 			"type": "text",
 			"x": 920,
 			"y": 160,
@@ -98,50 +113,60 @@
 			"color": "4"
 		},
 		{
-			"id": "d1b2c3d4e5f60040",
+			"id": "lgrd011node00011",
 			"type": "link",
 			"x": 0,
-			"y": 500,
+			"y": 560,
 			"width": 300,
-			"height": 250,
+			"height": 200,
 			"url": "https://github.com/org/repo/issues"
 		},
 		{
-			"id": "d1b2c3d4e5f60041",
+			"id": "lgrd012node00012",
 			"type": "text",
 			"x": 420,
-			"y": 860,
+			"y": 900,
 			"width": 840,
 			"height": 80,
-			"text": "**Sprint 23** — Due: 2025-02-14 | Team: Alice, Bob, Carol | Goal: Complete DB migration with zero downtime",
+			"text": "**Sprint 23** | Due: 2026-04-30 | Team: Alice, Bob, Carol | Goal: Complete DB migration with zero downtime",
 			"color": "1"
 		}
 	],
 	"edges": [
 		{
-			"id": "ed1b2c3d4e5f6001",
-			"fromNode": "d1b2c3d4e5f60020",
-			"fromSide": "bottom",
-			"toNode": "d1b2c3d4e5f60021",
-			"toSide": "top",
-			"label": "plan"
-		},
-		{
-			"id": "ed1b2c3d4e5f6002",
-			"fromNode": "d1b2c3d4e5f60010",
+			"id": "lgrd000edge00000",
+			"fromNode": "lgrd004node00004",
+			"toNode": "lgrd007node00007",
 			"fromSide": "right",
-			"toNode": "d1b2c3d4e5f60020",
 			"toSide": "left",
 			"label": "depends on",
 			"color": "1"
 		},
 		{
-			"id": "ed1b2c3d4e5f6003",
-			"fromNode": "d1b2c3d4e5f60030",
+			"id": "lgrd001edge00001",
+			"fromNode": "lgrd007node00007",
+			"toNode": "lgrd008node00008",
 			"fromSide": "bottom",
-			"toNode": "d1b2c3d4e5f60031",
 			"toSide": "top",
-			"toEnd": "none"
+			"label": "plan"
+		},
+		{
+			"id": "lgrd002edge00002",
+			"fromNode": "lgrd008node00008",
+			"toNode": "lgrd009node00009",
+			"fromSide": "right",
+			"toSide": "left",
+			"label": "enables",
+			"color": "4"
+		},
+		{
+			"id": "lgrd003edge00003",
+			"fromNode": "lgrd005node00005",
+			"toNode": "lgrd007node00007",
+			"fromSide": "right",
+			"toSide": "left",
+			"label": "blocks",
+			"color": "1"
 		}
 	]
 }

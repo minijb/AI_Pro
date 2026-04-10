@@ -1,0 +1,134 @@
+{
+	"nodes": [
+		{
+			"id": "grp_todo",
+			"type": "group",
+			"x": -40,
+			"y": -40,
+			"width": 380,
+			"height": 620,
+			"label": "📋 待办",
+			"color": "3"
+		},
+		{
+			"id": "grp_doing",
+			"type": "group",
+			"x": 420,
+			"y": -40,
+			"width": 380,
+			"height": 620,
+			"label": "🔄 进行中",
+			"color": "2"
+		},
+		{
+			"id": "grp_done",
+			"type": "group",
+			"x": 880,
+			"y": -40,
+			"width": 380,
+			"height": 620,
+			"label": "✅ 已完成",
+			"color": "4"
+		},
+		{
+			"id": "card01",
+			"type": "text",
+			"x": 0,
+			"y": 0,
+			"width": 300,
+			"height": 140,
+			"text": "## 需求评审\n\n- 收集用户反馈\n- 整理功能优先级\n- 输出 PRD 文档",
+			"color": "1"
+		},
+		{
+			"id": "card02",
+			"type": "text",
+			"x": 0,
+			"y": 180,
+			"width": 300,
+			"height": 120,
+			"text": "## 技术方案设计\n\n- 系统架构选型\n- 数据库设计\n- API 规范定义",
+			"color": "3"
+		},
+		{
+			"id": "card03",
+			"type": "text",
+			"x": 460,
+			"y": 0,
+			"width": 300,
+			"height": 140,
+			"text": "## 前端开发\n\n- 登录页面\n- 仪表盘布局\n- 组件库集成",
+			"color": "2"
+		},
+		{
+			"id": "card04",
+			"type": "file",
+			"x": 460,
+			"y": 180,
+			"width": 300,
+			"height": 200,
+			"file": "Notes/API Spec.md",
+			"subpath": "#Endpoints",
+			"color": "5"
+		},
+		{
+			"id": "card05",
+			"type": "text",
+			"x": 920,
+			"y": 0,
+			"width": 300,
+			"height": 120,
+			"text": "## 环境搭建\n\n- Git 仓库初始化\n- CI/CD 流水线\n- 开发文档",
+			"color": "4"
+		},
+		{
+			"id": "card06",
+			"type": "link",
+			"x": 920,
+			"y": 160,
+			"width": 300,
+			"height": 250,
+			"url": "https://github.com/org/project",
+			"color": "5"
+		},
+		{
+			"id": "summary01",
+			"type": "text",
+			"x": -40,
+			"y": 720,
+			"width": 1300,
+			"height": 80,
+			"text": "**Sprint 12** | 周期: 2026-04-01 ~ 2026-04-14 | 团队: 小明、小红、小刚 | 目标: 完成核心功能开发",
+			"color": "1"
+		}
+	],
+	"edges": [
+		{
+			"id": "e01",
+			"fromNode": "card01",
+			"fromSide": "right",
+			"toNode": "card03",
+			"toSide": "left",
+			"label": "依赖",
+			"color": "1"
+		},
+		{
+			"id": "e02",
+			"fromNode": "card02",
+			"fromSide": "right",
+			"toNode": "card04",
+			"toSide": "left",
+			"label": "参考",
+			"color": "3"
+		},
+		{
+			"id": "e03",
+			"fromNode": "card03",
+			"fromSide": "right",
+			"toNode": "card05",
+			"toSide": "left",
+			"label": "完成",
+			"color": "4"
+		}
+	]
+}

@@ -1,44 +1,44 @@
 ---
 name: obsidian-bases
 description: >
-  Create and configure Obsidian Base files (.base) — database-like views with tables, cards, lists, and maps.
-  Trigger on: "bases", "base file", "obsidian database", "note database", "table/card/list/map view",
-  organizing/querying notes with properties. Use whenever creating .base files, building database views,
-  setting up filtered/sorted/grouped views, writing Bases formulas, or embedding a base view into a note.
+  创建和配置 Obsidian Base 文件（.base）—— 支持表格、卡片、列表和地图视图的类数据库视图。
+  触发词："bases"、"base file"、"obsidian database"、"note database"、"table/card/list/map view"、
+  使用属性组织/查询笔记。在创建 .base 文件、构建数据库视图、设置筛选/排序/分组视图、
+  编写 Bases 公式，或在笔记中嵌入 base 视图时使用。
 paths: "**/*.base"
 ---
 
 # Obsidian Bases
 
-Bases is a core Obsidian plugin that creates database-like views of notes. It lets users view, edit, sort, filter, and group files by their properties. All data lives in standard Markdown files and their frontmatter properties — Bases just provides the view layer.
+Bases 是 Obsidian 的核心插件，用于创建类数据库视图。它允许用户按属性查看、编辑、排序、筛选和分组文件。所有数据都存储在标准 Markdown 文件及其 frontmatter 属性中——Bases 仅提供视图层。
 
-## File Format
+## 文件格式
 
-A Base is saved as a `.base` file containing YAML. It can also be embedded inline via a `base` code block.
+Base 以包含 YAML 的 `.base` 文件形式保存。也可以通过 `base` 代码块内联嵌入到笔记中。
 
-## Root-Level YAML Structure
+## 根级 YAML 结构
 
 ```yaml
-filters:       # Global conditions narrowing the dataset (apply to all views)
-formulas:      # Custom computed properties
-properties:    # Display configuration for properties
-summaries:     # Custom aggregation formulas
-views:         # List of view configurations
+filters:       # 全局条件，缩小数据集范围（应用于所有视图）
+formulas:      # 自定义计算属性
+properties:    # 属性的显示配置
+summaries:     # 自定义聚合公式
+views:         # 视图配置列表
 ```
 
 ---
 
-## Filters
+## 筛选器
 
-Filters narrow down which files appear. They can be defined globally (root level) or per-view. Global and view-level filters are combined with AND.
+筛选器用于限定显示哪些文件。可以在全局（根级）或每个视图中单独定义。全局筛选器和视图级筛选器通过 AND 逻辑合并。
 
-### Filter Conjunctions
+### 筛选器连接词
 
-- `and:` — all conditions must be true
-- `or:` — at least one condition must be true  
-- `not:` — none of the conditions can be true
+- `and:` — 所有条件都必须满足
+- `or:` — 至少有一个条件满足
+- `not:` — 所有条件都不能满足
 
-### Filter Syntax
+### 筛选器语法
 
 ```yaml
 filters:
@@ -52,7 +52,7 @@ filters:
     - file.hasTag("archived")
 ```
 
-Filters can be nested:
+筛选器支持嵌套：
 
 ```yaml
 filters:
@@ -65,24 +65,24 @@ filters:
         - file.hasTag("archive")
 ```
 
-### Common Filter Expressions
+### 常用筛选表达式
 
-| Expression | Description |
+| 表达式 | 说明 |
 |---|---|
-| `file.hasTag("tagname")` | File has the specified tag (includes nested) |
-| `file.inFolder("folder")` | File is in folder or subfolder |
-| `file.hasLink("filename")` | File links to the specified file |
-| `file.hasProperty("prop")` | File has the specified property |
-| `'property == "value"'` | Property equals value |
-| `'property != "value"'` | Property does not equal value |
-| `'property > 5'` | Numeric comparison |
-| `'file.mtime > now() - "1 week"'` | Modified within last week |
+| `file.hasTag("tagname")` | 文件包含指定标签（包含嵌套标签） |
+| `file.inFolder("folder")` | 文件位于指定文件夹或子文件夹中 |
+| `file.hasLink("filename")` | 文件链接到指定文件 |
+| `file.hasProperty("prop")` | 文件包含指定属性 |
+| `'property == "value"'` | 属性等于指定值 |
+| `'property != "value"'` | 属性不等于指定值 |
+| `'property > 5'` | 数值比较 |
+| `'file.mtime > now() - "1 week"'` | 在过去一周内被修改 |
 
 ---
 
-## Formulas
+## 公式
 
-Formulas create calculated properties from existing data. Use the `if()` function for conditional logic — ternary operators (`? :`) are **not supported**.
+公式用于根据现有数据创建计算属性。条件逻辑使用 `if()` 函数——三元运算符（`? :`）**不支持**。
 
 ```yaml
 formulas:
@@ -91,26 +91,26 @@ formulas:
   full_name: 'first_name + " " + last_name'
   overdue: 'if(due_date < now() && status != "Done", "Overdue", "")'
   deadline: 'start_date + "2w"'
-  # Nested if() for multiple conditions:
+  # 嵌套 if() 处理多个条件：
   level: 'if(score >= 90, "A", if(score >= 70, "B", "C"))'
 ```
 
-### Property References
+### 属性引用
 
-| Reference | Example |
+| 引用方式 | 示例 |
 |---|---|
-| Note property (shorthand) | `price`, `status` |
-| Note property (explicit) | `note.price`, `note["my prop"]` |
-| File property | `file.name`, `file.size`, `file.mtime` |
-| Formula property | `formula.formatted_price` |
+| 笔记属性（简写） | `price`, `status` |
+| 笔记属性（显式） | `note.price`, `note["my prop"]` |
+| 文件属性 | `file.name`, `file.size`, `file.mtime` |
+| 公式属性 | `formula.formatted_price` |
 
-Formulas cannot reference themselves (no circular references).
+公式不能引用自身（不支持循环引用）。
 
 ---
 
-## Properties Configuration
+## 属性配置
 
-Control display names for properties:
+控制属性的显示名称：
 
 ```yaml
 properties:
@@ -124,53 +124,53 @@ properties:
 
 ---
 
-## Summaries
+## 汇总
 
-Aggregate values across all notes in the result set.
+对结果集中所有笔记的属性值进行聚合计算。
 
-### Built-in Summaries
+### 内置汇总类型
 
-| Summary | Input Type | Description |
+| 汇总类型 | 输入类型 | 说明 |
 |---|---|---|
-| Average | Number | Mathematical mean |
-| Sum | Number | Sum of all values |
-| Min / Max | Number | Smallest / Largest |
-| Median | Number | Mathematical median |
-| Range | Number | Max minus Min |
-| Stddev | Number | Standard deviation |
-| Earliest / Latest | Date | Earliest / Latest date |
-| Range | Date | Latest minus Earliest |
-| Checked / Unchecked | Boolean | Count of true / false |
-| Empty / Filled | Any | Count of empty / non-empty |
-| Unique | Any | Count of unique values |
+| Average | 数值 | 算术平均值 |
+| Sum | 数值 | 总和 |
+| Min / Max | 数值 | 最小值 / 最大值 |
+| Median | 数值 | 中位数 |
+| Range | 数值 | 最大值减最小值 |
+| Stddev | 数值 | 标准差 |
+| Earliest / Latest | 日期 | 最早 / 最晚日期 |
+| Range | 日期 | 最晚日期减最早日期 |
+| Checked / Unchecked | 布尔值 | true / false 的计数 |
+| Empty / Filled | 任意 | 空值 / 非空值的计数 |
+| Unique | 任意 | 不重复值的计数 |
 
-### Custom Summaries
+### 自定义汇总
 
 ```yaml
 summaries:
   customAverage: 'values.mean().round(3)'
 ```
 
-In summary formulas, `values` is a list of all values for that property across every note.
+在汇总公式中，`values` 是该属性在所有笔记上的值列表。
 
 ---
 
-## Views
+## 视图
 
-Each view defines a layout type and its configuration.
+每个视图定义一种布局类型及其配置。
 
 ```yaml
 views:
   - type: table          # table | cards | list | map
     name: "My View"
-    limit: 10            # Max rows to display
+    limit: 10            # 最大显示行数
     groupBy:
       property: note.status
-      direction: DESC    # ASC or DESC
-    filters:             # View-specific filters (combined with global via AND)
+      direction: DESC    # ASC 或 DESC
+    filters:             # 视图级筛选器（与全局筛选器通过 AND 合并）
       and:
         - 'status != "done"'
-    order:               # Column/property display order
+    order:               # 列/属性显示顺序
       - file.name
       - note.status
       - formula.priority_score
@@ -179,158 +179,158 @@ views:
       formula.priority_score: Average
 ```
 
-> **Note:** YAML syntax does not have a `sortBy` field. Sorting can only be done via `groupBy` (which groups AND sorts) or through the Bases UI. If you only need sorting without grouping, configure it in the UI instead of YAML.
+> **注意：** YAML 语法中没有 `sortBy` 字段。排序只能通过 `groupBy`（同时分组和排序）或通过 Bases 界面配置实现。如果只需要排序而不需要分组，请在界面中配置，而不是写在 YAML 中。
 
-### View Types
+### 视图类型
 
-#### Table View
-Displays files as rows with property columns. See `examples/table-task-tracker.base` for a full example.
+#### 表格视图
+以行（文件）和列（属性）的形式展示文件。完整示例参见 `examples/table-task-tracker.base`。
 
-Settings: Row height (Short / Medium / Tall / Extra tall).
+设置项：行高（短 / 中 / 高 / 超高）。
 
-#### Cards View
-Gallery-like grid layout with optional cover images. See `examples/cards-reading-list.base`.
+#### 卡片视图
+类似图库的网格布局，支持封面图片。完整示例参见 `examples/cards-reading-list.base`。
 
-Settings:
-- **Card size** — width of each card
-- **Image property** — property containing the cover image (wiki link, URL, or hex color)
-- **Image fit** — `cover` (fill + crop) or `contain` (fit without cropping)
-- **Image aspect ratio** — defaults to 1:1
+设置项：
+- **卡片大小** — 每张卡片的宽度
+- **图片属性** — 包含封面图片的属性（wiki 链接、URL 或十六进制颜色）
+- **图片适应方式** — `cover`（填充并裁剪）或 `contain`（适应但不裁剪）
+- **图片宽高比** — 默认为 1:1
 
-#### List View
-Bulleted or numbered list. See `examples/list-simple-notes.base`.
+#### 列表视图
+带项目符号或编号的列表。完整示例参见 `examples/list-simple-notes.base`。
 
-Settings:
-- **Markers** — bullets, numbers, or none
-- **Indent properties** — show properties as indented sub-items
-- **Separators** — character separating properties when indent is off (default: comma)
+设置项：
+- **标记类型** — 项目符号、数字或无标记
+- **缩进属性** — 将属性显示为缩进的子项
+- **分隔符** — 关闭缩进时分隔属性的字符（默认为逗号）
 
-#### Map View
-Interactive map with markers. Requires the Maps plugin. See `examples/map-places.base`.
+#### 地图视图
+带标记的交互式地图，需安装 Maps 插件。完整示例参见 `examples/map-places.base`。
 
-Settings:
-- Embedded height, center coordinates, zoom constraints
-- Marker coordinates, color, icon
-- Background map tiles
+设置项：
+- 内嵌高度、中心坐标、缩放限制
+- 标记坐标、颜色、图标
+- 背景地图瓦片
 
 ---
 
-## File Properties (Available for All Files)
+## 文件属性（所有文件均可用）
 
-| Property | Type | Description |
+| 属性 | 类型 | 说明 |
 |---|---|---|
-| `file.name` | String | File name |
-| `file.path` | String | Full file path |
-| `file.folder` | String | Folder path |
-| `file.ext` | String | File extension |
-| `file.size` | Number | File size |
-| `file.ctime` | Date | Created time |
-| `file.mtime` | Date | Modified time |
-| `file.tags` | List | All tags |
-| `file.links` | List | All internal links |
-| `file.backlinks` | List | Backlinks (performance heavy) |
-| `file.embeds` | List | All embeds |
-| `file.properties` | Object | All frontmatter properties |
+| `file.name` | 字符串 | 文件名 |
+| `file.path` | 字符串 | 完整文件路径 |
+| `file.folder` | 字符串 | 文件夹路径 |
+| `file.ext` | 字符串 | 文件扩展名 |
+| `file.size` | 数值 | 文件大小 |
+| `file.ctime` | 日期 | 创建时间 |
+| `file.mtime` | 日期 | 修改时间 |
+| `file.tags` | 列表 | 所有标签 |
+| `file.links` | 列表 | 所有内部链接 |
+| `file.backlinks` | 列表 | 反向链接（性能开销较大） |
+| `file.embeds` | 列表 | 所有嵌入内容 |
+| `file.properties` | 对象 | 所有 frontmatter 属性 |
 
 ---
 
-## Operators
+## 运算符
 
-### Arithmetic: `+`, `-`, `*`, `/`, `%`, `()`  
-### Comparison: `==`, `!=`, `>`, `<`, `>=`, `<=`  
-### Boolean: `!`, `&&`, `||`
+### 算术运算符：`+`, `-`, `*`, `/`, `%`, `()`
+### 比较运算符：`==`, `!=`, `>`, `<`, `>=`, `<=`
+### 布尔运算符：`!`, `&&`, `||`
 
 ---
 
-## Date Arithmetic
+## 日期运算
 
-Duration units: `y`/`year`, `M`/`month`, `d`/`day`, `w`/`week`, `h`/`hour`, `m`/`minute`, `s`/`second`
+时间单位：`y`/`year`、`M`/`month`、`d`/`day`、`w`/`week`、`h`/`hour`、`m`/`minute`、`s`/`second`
 
 ```yaml
-# Examples
-date + "1M"              # Add 1 month
-now() - "1 week"         # 1 week ago
-file.mtime > now() - "7d"  # Modified in last 7 days
+# 示例
+date + "1M"              # 加 1 个月
+now() - "1 week"         # 1 周前
+file.mtime > now() - "7d"  # 7 天内修改过
 ```
 
 ---
 
-## Types
+## 数据类型
 
-- **String**: `"hello"` or `'world'`
-- **Number**: `42`, `3.14`
-- **Boolean**: `true`, `false`
-- **Date**: `date("2025-01-01")`, `now()`, `today()`
-- **List**: `[1, 2, 3]`, access with `property[0]`
-- **Link**: `link("filename")`, `link("filename", "display text")`
+- **字符串**： `"hello"` 或 `'world'`
+- **数值**： `42`, `3.14`
+- **布尔值**： `true`, `false`
+- **日期**： `date("2025-01-01")`, `now()`, `today()`
+- **列表**： `[1, 2, 3]`，通过 `property[0]` 访问元素
+- **链接**： `link("filename")`, `link("filename", "display text")`
 
 ---
 
-## Key Global Functions
+## 常用全局函数
 
-| Function | Signature | Description |
+| 函数 | 签名 | 说明 |
 |---|---|---|
-| `if()` | `if(condition, trueVal, falseVal?)` | Conditional |
-| `now()` | `now()` | Current datetime |
-| `today()` | `today()` | Current date (time = 0) |
-| `date()` | `date("YYYY-MM-DD HH:mm:ss")` | Parse date string |
-| `link()` | `link(path, display?)` | Create link |
-| `image()` | `image(path)` | Render image |
-| `icon()` | `icon("lucide-name")` | Render Lucide icon |
-| `max()` / `min()` | `max(a, b, ...)` | Max/min of numbers |
-| `number()` | `number(input)` | Convert to number |
-| `list()` | `list(element)` | Wrap in list |
-| `html()` | `html(string)` | Render as HTML |
-| `escapeHTML()` | `escapeHTML(string)` | Escape HTML chars |
-| `duration()` | `duration("5h")` | Parse duration |
-| `file()` | `file(path)` | Get file object |
-| `random()` | `random()` | Random 0-1 |
+| `if()` | `if(condition, trueVal, falseVal?)` | 条件判断 |
+| `now()` | `now()` | 当前日期时间 |
+| `today()` | `today()` | 当前日期（时间为 0） |
+| `date()` | `date("YYYY-MM-DD HH:mm:ss")` | 解析日期字符串 |
+| `link()` | `link(path, display?)` | 创建链接 |
+| `image()` | `image(path)` | 渲染图片 |
+| `icon()` | `icon("lucide-name")` | 渲染 Lucide 图标 |
+| `max()` / `min()` | `max(a, b, ...)` | 多个数值的最大值 / 最小值 |
+| `number()` | `number(input)` | 转换为数值 |
+| `list()` | `list(element)` | 包装为列表 |
+| `html()` | `html(string)` | 渲染为 HTML |
+| `escapeHTML()` | `escapeHTML(string)` | 转义 HTML 字符 |
+| `duration()` | `duration("5h")` | 解析时间长度 |
+| `file()` | `file(path)` | 获取文件对象 |
+| `random()` | `random()` | 返回 0-1 之间的随机数 |
 
-## Key Method Functions
+## 常用方法函数
 
-**String**: `.contains()`, `.containsAll()`, `.containsAny()`, `.lower()`, `.title()`, `.replace()`, `.split()`, `.slice()`, `.trim()`, `.startsWith()`, `.endsWith()`, `.repeat()`, `.reverse()`, `.length`
+**字符串**：`.contains()`, `.containsAll()`, `.containsAny()`, `.lower()`, `.title()`, `.replace()`, `.split()`, `.slice()`, `.trim()`, `.startsWith()`, `.endsWith()`, `.repeat()`, `.reverse()`, `.length`
 
-**Number**: `.abs()`, `.ceil()`, `.floor()`, `.round(digits)`, `.toFixed(precision)`
+**数值**：`.abs()`, `.ceil()`, `.floor()`, `.round(digits)`, `.toFixed(precision)`
 
-**Date**: `.format("YYYY-MM-DD")`, `.relative()`, `.date()`, `.time()`, `.year`, `.month`, `.day`, `.hour`
+**日期**：`.format("YYYY-MM-DD")`, `.relative()`, `.date()`, `.time()`, `.year`, `.month`, `.day`, `.hour`
 
-**List**: `.contains()`, `.filter(expr)`, `.map(expr)`, `.reduce(expr, acc)`, `.sort()`, `.join(sep)`, `.unique()`, `.flat()`, `.slice()`, `.reverse()`, `.length`
+**列表**：`.contains()`, `.filter(expr)`, `.map(expr)`, `.reduce(expr, acc)`, `.sort()`, `.join(sep)`, `.unique()`, `.flat()`, `.slice()`, `.reverse()`, `.length`
 
-**File**: `.hasTag()`, `.hasLink()`, `.hasProperty()`, `.inFolder()`, `.asLink()`
+**文件**：`.hasTag()`, `.hasLink()`, `.hasProperty()`, `.inFolder()`, `.asLink()`
 
-**Link**: `.asFile()`, `.linksTo(file)`
+**链接**：`.asFile()`, `.linksTo(file)`
 
-For the complete function reference, see the official documentation at https://obsidian.md/help/bases/functions
-
----
-
-## The `this` Object
-
-`this` refers to different things depending on context:
-- **In a .base file**: points to the base file's own properties
-- **Embedded in a note**: points to the embedding note's properties
-- **In the sidebar**: points to the active file in the main content area
-
-Useful pattern: `file.hasLink(this.file)` — replicates a backlinks pane.
+完整函数参考请参阅官方文档：https://obsidian.md/help/bases/functions
 
 ---
 
-## Creating a Base
+## `this` 对象
 
-### As a standalone file
-- Command palette → "Bases: Create new base"
-- Right-click folder in file explorer → "New base"
-- Ribbon → "Create new base"
+`this` 在不同上下文中的指向不同：
+- **在 .base 文件中**：指向该 base 文件自身的属性
+- **嵌入到笔记中时**：指向嵌入所在笔记的属性
+- **在侧边栏中**：指向主内容区域当前激活的文件
 
-### Embedded in a note
+常用模式：`file.hasLink(this.file)` —— 模拟反向链接面板。
 
-**Embed a .base file:**
+---
+
+## 创建 Base
+
+### 作为独立文件
+- 命令面板 → "Bases: Create new base"
+- 在文件浏览器中右键文件夹 → "New base"
+- 侧边栏按钮 → "Create new base"
+
+### 内嵌到笔记中
+
+**嵌入 .base 文件：**
 ```markdown
 ![[MyBase.base]]
 ![[MyBase.base#ViewName]]
 ```
 
-**Inline code block:**
+**内联代码块：**
 ````markdown
 ```base
 filters:
@@ -344,20 +344,20 @@ views:
 
 ---
 
-## Examples
+## 示例
 
-Refer to the `examples/` folder for ready-to-use templates:
+参考 `examples/` 文件夹中的现成模板：
 
-- [table-task-tracker.base](examples/table-task-tracker.base) — Task management with status, priority, due dates, and overdue detection
-- [cards-reading-list.base](examples/cards-reading-list.base) — Reading list with cover images in card layout
-- [list-simple-notes.base](examples/list-simple-notes.base) — Simple filtered note list
-- [map-places.base](examples/map-places.base) — Places displayed on an interactive map
-- [table-project-dashboard.base](examples/table-project-dashboard.base) — Project dashboard with formulas and summaries
-- [embedded-inline.md](examples/embedded-inline.md) — How to embed bases inline in a note
+- [table-task-tracker.base](examples/table-task-tracker.base) — 任务管理，包含状态、优先级、截止日期和逾期检测
+- [cards-reading-list.base](examples/cards-reading-list.base) — 阅读清单，以卡片布局展示封面图片
+- [list-simple-notes.base](examples/list-simple-notes.base) — 简单的筛选笔记列表
+- [map-places.base](examples/map-places.base) — 在交互式地图上展示地点
+- [table-project-dashboard.base](examples/table-project-dashboard.base) — 使用公式和汇总的项目仪表板
+- [embedded-inline.md](examples/embedded-inline.md) — 如何在笔记中内联嵌入 bases
 
 ---
 
-> Sources:
+> 参考来源：
 > - https://obsidian.md/help/bases
 > - https://obsidian.md/help/bases/create-base
 > - https://obsidian.md/help/bases/views
