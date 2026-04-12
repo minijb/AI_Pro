@@ -1,0 +1,27 @@
+# 03_项目 文件索引
+#
+# 筛选 wiki/03_项目/ 目录下的所有笔记
+# 显示：标题、创建时间、更新时间、一句话描述
+
+filters:
+  and:
+    - file.inFolder("wiki/03_项目/")
+
+properties:
+  title:
+    displayName: 索引
+  created:
+    displayName: 创建时间
+  updated:
+    displayName: 更新时间
+  description:
+    displayName: 描述
+
+views:
+  - type: table
+    name: "03_项目 笔记列表"
+    order:
+      - file.mtime
+    groupBy:
+      property: file.mtime
+      direction: DESC

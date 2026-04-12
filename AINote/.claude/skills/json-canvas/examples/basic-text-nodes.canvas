@@ -1,0 +1,70 @@
+{
+	"nodes": [
+		{
+			"id": "btxn000node00000",
+			"type": "text",
+			"x": 0,
+			"y": 0,
+			"width": 300,
+			"height": 200,
+			"text": "# Getting Started\n\nThis is a **text node** on the canvas.\n\n- Supports full Markdown\n- Including [[wikilinks]]\n- And `inline code`"
+		},
+		{
+			"id": "btxn001node00001",
+			"type": "text",
+			"x": 400,
+			"y": 0,
+			"width": 300,
+			"height": 150,
+			"text": "## Key Concepts\n\n1. Nodes are visual cards\n2. Edges connect nodes\n3. Groups organize nodes",
+			"color": "4"
+		},
+		{
+			"id": "btxn002node00002",
+			"type": "text",
+			"x": 0,
+			"y": 300,
+			"width": 300,
+			"height": 150,
+			"text": "## Markdown Features\n\n> Callouts and blockquotes work too.\n\n**Bold**, *italic*, ~~strikethrough~~",
+			"color": "5"
+		},
+		{
+			"id": "btxn003node00003",
+			"type": "text",
+			"x": 400,
+			"y": 300,
+			"width": 300,
+			"height": 180,
+			"text": "## Code Example\n\n```python\ndef hello():\n    print(\"Hello from canvas!\")\n```\n\nCode blocks render with syntax highlighting.",
+			"color": "6"
+		}
+	],
+	"edges": [
+		{
+			"id": "btxn000edge00000",
+			"fromNode": "btxn000node00000",
+			"toNode": "btxn001node00001",
+			"fromSide": "right",
+			"toSide": "left",
+			"label": "leads to"
+		},
+		{
+			"id": "btxn001edge00001",
+			"fromNode": "btxn000node00000",
+			"toNode": "btxn002node00002",
+			"fromSide": "bottom",
+			"toSide": "top",
+			"color": "5"
+		},
+		{
+			"id": "btxn002edge00002",
+			"fromNode": "btxn001node00001",
+			"toNode": "btxn003node00003",
+			"fromSide": "bottom",
+			"toSide": "top",
+			"color": "6",
+			"label": "example"
+		}
+	]
+}

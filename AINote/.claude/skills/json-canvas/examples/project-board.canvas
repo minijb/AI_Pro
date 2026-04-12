@@ -1,0 +1,147 @@
+{
+	"nodes": [
+		{
+			"id": "d1b2c3d4e5f60001",
+			"type": "group",
+			"x": -40,
+			"y": -40,
+			"width": 380,
+			"height": 820,
+			"label": "Backlog",
+			"color": "3"
+		},
+		{
+			"id": "d1b2c3d4e5f60002",
+			"type": "group",
+			"x": 420,
+			"y": -40,
+			"width": 380,
+			"height": 820,
+			"label": "In Progress",
+			"color": "2"
+		},
+		{
+			"id": "d1b2c3d4e5f60003",
+			"type": "group",
+			"x": 880,
+			"y": -40,
+			"width": 380,
+			"height": 820,
+			"label": "Done",
+			"color": "4"
+		},
+		{
+			"id": "d1b2c3d4e5f60010",
+			"type": "text",
+			"x": 0,
+			"y": 0,
+			"width": 300,
+			"height": 140,
+			"text": "## User Authentication\n\n- OAuth2 integration\n- Session management\n- Password reset flow"
+		},
+		{
+			"id": "d1b2c3d4e5f60011",
+			"type": "text",
+			"x": 0,
+			"y": 220,
+			"width": 300,
+			"height": 120,
+			"text": "## API Rate Limiting\n\n- Token bucket algorithm\n- Per-user quotas"
+		},
+		{
+			"id": "d1b2c3d4e5f60012",
+			"type": "text",
+			"x": 0,
+			"y": 440,
+			"width": 300,
+			"height": 120,
+			"text": "## Dark Mode Support\n\n- CSS variables\n- System preference detection"
+		},
+		{
+			"id": "d1b2c3d4e5f60020",
+			"type": "text",
+			"x": 460,
+			"y": 0,
+			"width": 300,
+			"height": 140,
+			"text": "## Database Migration\n\n- PostgreSQL → CockroachDB\n- Zero-downtime migration\n- Data validation scripts",
+			"color": "2"
+		},
+		{
+			"id": "d1b2c3d4e5f60021",
+			"type": "file",
+			"x": 460,
+			"y": 240,
+			"width": 300,
+			"height": 200,
+			"file": "Projects/Sprint 23/migration-plan.md",
+			"subpath": "#Timeline"
+		},
+		{
+			"id": "d1b2c3d4e5f60030",
+			"type": "text",
+			"x": 920,
+			"y": 0,
+			"width": 300,
+			"height": 120,
+			"text": "## CI/CD Pipeline\n\n- GitHub Actions setup\n- Auto-deploy to staging",
+			"color": "4"
+		},
+		{
+			"id": "d1b2c3d4e5f60031",
+			"type": "text",
+			"x": 920,
+			"y": 160,
+			"width": 300,
+			"height": 120,
+			"text": "## Logging System\n\n- Structured JSON logs\n- ELK stack integration",
+			"color": "4"
+		},
+		{
+			"id": "d1b2c3d4e5f60040",
+			"type": "link",
+			"x": 0,
+			"y": 500,
+			"width": 300,
+			"height": 250,
+			"url": "https://github.com/org/repo/issues"
+		},
+		{
+			"id": "d1b2c3d4e5f60041",
+			"type": "text",
+			"x": 420,
+			"y": 860,
+			"width": 840,
+			"height": 80,
+			"text": "**Sprint 23** — Due: 2025-02-14 | Team: Alice, Bob, Carol | Goal: Complete DB migration with zero downtime",
+			"color": "1"
+		}
+	],
+	"edges": [
+		{
+			"id": "ed1b2c3d4e5f6001",
+			"fromNode": "d1b2c3d4e5f60020",
+			"fromSide": "bottom",
+			"toNode": "d1b2c3d4e5f60021",
+			"toSide": "top",
+			"label": "plan"
+		},
+		{
+			"id": "ed1b2c3d4e5f6002",
+			"fromNode": "d1b2c3d4e5f60010",
+			"fromSide": "right",
+			"toNode": "d1b2c3d4e5f60020",
+			"toSide": "left",
+			"label": "depends on",
+			"color": "1"
+		},
+		{
+			"id": "ed1b2c3d4e5f6003",
+			"fromNode": "d1b2c3d4e5f60030",
+			"fromSide": "bottom",
+			"toNode": "d1b2c3d4e5f60031",
+			"toSide": "top",
+			"toEnd": "none"
+		}
+	]
+}

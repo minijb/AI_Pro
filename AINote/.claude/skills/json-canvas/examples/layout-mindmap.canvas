@@ -1,0 +1,214 @@
+{
+	"nodes": [
+		{
+			"id": "a1b2c3d4e5f67801",
+			"type": "text",
+			"x": -160,
+			"y": -60,
+			"width": 300,
+			"height": 120,
+			"text": "# Programming Languages\n\nCore concepts and branches of popular languages, organized as a mind map.",
+			"color": "4"
+		},
+		{
+			"id": "a1b2c3d4e5f67802",
+			"type": "text",
+			"x": 260,
+			"y": -220,
+			"width": 280,
+			"height": 140,
+			"text": "## Python\n\n- Dynamic typing\n- Interpreted language\n- Rich ecosystem",
+			"color": "5"
+		},
+		{
+			"id": "a1b2c3d4e5f67803",
+			"type": "text",
+			"x": 260,
+			"y": 40,
+			"width": 280,
+			"height": 140,
+			"text": "## JavaScript\n\n- Event-driven\n- Runs in browser\n- Full-stack capable",
+			"color": "5"
+		},
+		{
+			"id": "a1b2c3d4e5f67804",
+			"type": "text",
+			"x": -640,
+			"y": -220,
+			"width": 280,
+			"height": 140,
+			"text": "## Java\n\n- Object-oriented\n- Strongly typed\n- JVM-based",
+			"color": "5"
+		},
+		{
+			"id": "a1b2c3d4e5f67805",
+			"type": "text",
+			"x": -640,
+			"y": 40,
+			"width": 280,
+			"height": 140,
+			"text": "## Rust\n\n- Memory safety\n- Zero-cost abstractions\n- Systems language",
+			"color": "2"
+		},
+		{
+			"id": "a1b2c3d4e5f67806",
+			"type": "text",
+			"x": 620,
+			"y": -300,
+			"width": 240,
+			"height": 100,
+			"text": "### Data Science\n\nNumPy, Pandas, ML",
+			"color": "6"
+		},
+		{
+			"id": "a1b2c3d4e5f67807",
+			"type": "text",
+			"x": 620,
+			"y": -160,
+			"width": 240,
+			"height": 100,
+			"text": "### Web Dev\n\nDjango, Flask, FastAPI",
+			"color": "6"
+		},
+		{
+			"id": "a1b2c3d4e5f67808",
+			"type": "text",
+			"x": 620,
+			"y": 40,
+			"width": 240,
+			"height": 100,
+			"text": "### Frontend\n\nReact, Vue, Svelte",
+			"color": "6"
+		},
+		{
+			"id": "a1b2c3d4e5f67809",
+			"type": "text",
+			"x": 620,
+			"y": 180,
+			"width": 240,
+			"height": 100,
+			"text": "### Backend\n\nNode.js, Deno, Bun",
+			"color": "6"
+		},
+		{
+			"id": "a1b2c3d4e5f6780a",
+			"type": "text",
+			"x": -980,
+			"y": -300,
+			"width": 240,
+			"height": 100,
+			"text": "### Spring Boot\n\nEnterprise framework",
+			"color": "6"
+		},
+		{
+			"id": "a1b2c3d4e5f6780b",
+			"type": "text",
+			"x": -980,
+			"y": -160,
+			"width": 240,
+			"height": 100,
+			"text": "### Android\n\nMobile development",
+			"color": "6"
+		},
+		{
+			"id": "a1b2c3d4e5f6780c",
+			"type": "text",
+			"x": -980,
+			"y": 60,
+			"width": 240,
+			"height": 100,
+			"text": "### Systems\n\nOS, drivers, embedded",
+			"color": "6"
+		}
+	],
+	"edges": [
+		{
+			"id": "e1b2c3d4e5f67801",
+			"fromNode": "a1b2c3d4e5f67801",
+			"fromSide": "left",
+			"toNode": "a1b2c3d4e5f67804",
+			"toSide": "right",
+			"color": "5"
+		},
+		{
+			"id": "e1b2c3d4e5f67802",
+			"fromNode": "a1b2c3d4e5f67801",
+			"fromSide": "left",
+			"toNode": "a1b2c3d4e5f67805",
+			"toSide": "right",
+			"color": "2"
+		},
+		{
+			"id": "e1b2c3d4e5f67803",
+			"fromNode": "a1b2c3d4e5f67801",
+			"fromSide": "right",
+			"toNode": "a1b2c3d4e5f67802",
+			"toSide": "left",
+			"color": "5"
+		},
+		{
+			"id": "e1b2c3d4e5f67804",
+			"fromNode": "a1b2c3d4e5f67801",
+			"fromSide": "right",
+			"toNode": "a1b2c3d4e5f67803",
+			"toSide": "left",
+			"color": "5"
+		},
+		{
+			"id": "e1b2c3d4e5f67805",
+			"fromNode": "a1b2c3d4e5f67802",
+			"fromSide": "right",
+			"toNode": "a1b2c3d4e5f67806",
+			"toSide": "left",
+			"toEnd": "arrow"
+		},
+		{
+			"id": "e1b2c3d4e5f67806",
+			"fromNode": "a1b2c3d4e5f67802",
+			"fromSide": "right",
+			"toNode": "a1b2c3d4e5f67807",
+			"toSide": "left",
+			"toEnd": "arrow"
+		},
+		{
+			"id": "e1b2c3d4e5f67807",
+			"fromNode": "a1b2c3d4e5f67803",
+			"fromSide": "right",
+			"toNode": "a1b2c3d4e5f67808",
+			"toSide": "left",
+			"toEnd": "arrow"
+		},
+		{
+			"id": "e1b2c3d4e5f67808",
+			"fromNode": "a1b2c3d4e5f67803",
+			"fromSide": "right",
+			"toNode": "a1b2c3d4e5f67809",
+			"toSide": "left",
+			"toEnd": "arrow"
+		},
+		{
+			"id": "e1b2c3d4e5f67809",
+			"fromNode": "a1b2c3d4e5f67804",
+			"fromSide": "left",
+			"toNode": "a1b2c3d4e5f6780a",
+			"toSide": "right",
+			"toEnd": "arrow"
+		},
+		{
+			"id": "e1b2c3d4e5f6780a",
+			"fromNode": "a1b2c3d4e5f67804",
+			"fromSide": "left",
+			"toNode": "a1b2c3d4e5f6780b",
+			"toSide": "right",
+			"toEnd": "arrow"
+		},
+		{
+			"id": "e1b2c3d4e5f6780b",
+			"fromNode": "a1b2c3d4e5f67805",
+			"fromSide": "left",
+			"toNode": "a1b2c3d4e5f6780c",
+			"toSide": "right",
+			"toEnd": "arrow"
+		}
+	]
+}

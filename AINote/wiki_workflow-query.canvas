@@ -1,0 +1,271 @@
+{
+	"nodes": [
+		{
+			"id": "query-entry",
+			"type": "text",
+			"x": 0,
+			"y": -420,
+			"width": 340,
+			"height": 100,
+			"text": "## ❓ Query 入口\n\n用户问「关于 xxx」或「query」\n触发 `wiki-query-agent`",
+			"color": "4"
+		},
+		{
+			"id": "query-understand",
+			"type": "text",
+			"x": 0,
+			"y": -240,
+			"width": 340,
+			"height": 80,
+			"text": "## 🧠 理解问题意图\n\n用户想知道什么？什么类型的问题？\n定义 / 教程 / 对比 / 参考 / 综述"
+		},
+		{
+			"id": "query-scope",
+			"type": "text",
+			"x": 0,
+			"y": -80,
+			"width": 340,
+			"height": 80,
+			"text": "## 📂 确定搜索范围\n\n全部 wiki / 指定分类 / 指定页面\n根据问题关键词决定"
+		},
+		{
+			"id": "query-search",
+			"type": "text",
+			"x": 0,
+			"y": 80,
+			"width": 340,
+			"height": 100,
+			"text": "## 🔎 搜索 wiki 内容\n\n- 全文检索\n- wikilink 图遍历\n- frontmatter 属性查询",
+			"color": "2"
+		},
+		{
+			"id": "query-collect",
+			"type": "text",
+			"x": 0,
+			"y": 260,
+			"width": 340,
+			"height": 80,
+			"text": "## 📋 收集相关页面\n\n按相关性排序\n过滤噪音结果"
+		},
+		{
+			"id": "query-decision",
+			"type": "text",
+			"x": 0,
+			"y": 420,
+			"width": 340,
+			"height": 80,
+			"text": "## 🤔 有直接答案？\n\n**是** → 综合多页面内容\n**否** → 标记信息缺口",
+			"color": "3"
+		},
+		{
+			"id": "query-synthesize",
+			"type": "text",
+			"x": 0,
+			"y": 580,
+			"width": 340,
+			"height": 100,
+			"text": "## 🧩 综合多页面内容\n\n提取要点 / 关联引用\n形成完整、结构化的答案",
+			"color": "5"
+		},
+		{
+			"id": "query-gap",
+			"type": "text",
+			"x": 0,
+			"y": 580,
+			"width": 340,
+			"height": 100,
+			"text": "## ⚠️ 标记信息缺口\n\n诚实告知用户\n哪些方面缺乏资料\n建议补充方向",
+			"color": "1"
+		},
+		{
+			"id": "query-archive-decision",
+			"type": "text",
+			"x": 0,
+			"y": 760,
+			"width": 340,
+			"height": 80,
+			"text": "## 💾 归档决策\n\n有价值且完整 → 归档到 wiki\n一般性问题 → 直接输出",
+			"color": "3"
+		},
+		{
+			"id": "query-archive",
+			"type": "text",
+			"x": -200,
+			"y": 920,
+			"width": 300,
+			"height": 100,
+			"text": "## 💾 归档优质答案\n\n新建 Q&A 页面\n或补充到现有页面\n建立 wikilinks",
+			"color": "5"
+		},
+		{
+			"id": "query-output",
+			"type": "text",
+			"x": 200,
+			"y": 920,
+			"width": 300,
+			"height": 80,
+			"text": "## ✅ 直接输出答案\n\n不归档\n仅返回综合答案",
+			"color": "4"
+		},
+		{
+			"id": "query-log",
+			"type": "text",
+			"x": 0,
+			"y": 1100,
+			"width": 340,
+			"height": 80,
+			"text": "## 📝 追加 log.md\n\n`## [YYYY-MM-DD] query | Question`"
+		},
+		{
+			"id": "query-end",
+			"type": "text",
+			"x": 0,
+			"y": 1260,
+			"width": 340,
+			"height": 80,
+			"text": "## ✅ Query 完成",
+			"color": "4"
+		},
+		{
+			"id": "query-branch-yes",
+			"type": "text",
+			"x": -100,
+			"y": 330,
+			"width": 60,
+			"height": 30,
+			"text": "↓ 有",
+			"color": "4"
+		},
+		{
+			"id": "query-branch-no",
+			"type": "text",
+			"x": 200,
+			"y": 330,
+			"width": 60,
+			"height": 30,
+			"text": "→ 无",
+			"color": "1"
+		}
+	],
+	"edges": [
+		{
+			"id": "q01",
+			"fromNode": "query-entry",
+			"fromSide": "bottom",
+			"toNode": "query-understand",
+			"toSide": "top",
+			"toEnd": "arrow"
+		},
+		{
+			"id": "q02",
+			"fromNode": "query-understand",
+			"fromSide": "bottom",
+			"toNode": "query-scope",
+			"toSide": "top",
+			"toEnd": "arrow"
+		},
+		{
+			"id": "q03",
+			"fromNode": "query-scope",
+			"fromSide": "bottom",
+			"toNode": "query-search",
+			"toSide": "top",
+			"toEnd": "arrow"
+		},
+		{
+			"id": "q04",
+			"fromNode": "query-search",
+			"fromSide": "bottom",
+			"toNode": "query-collect",
+			"toSide": "top",
+			"toEnd": "arrow"
+		},
+		{
+			"id": "q05",
+			"fromNode": "query-collect",
+			"fromSide": "bottom",
+			"toNode": "query-decision",
+			"toSide": "top",
+			"toEnd": "arrow"
+		},
+		{
+			"id": "q06-yes",
+			"fromNode": "query-decision",
+			"fromSide": "bottom",
+			"toNode": "query-synthesize",
+			"toSide": "top",
+			"toEnd": "arrow",
+			"label": "信息足够"
+		},
+		{
+			"id": "q06-no",
+			"fromNode": "query-decision",
+			"fromSide": "right",
+			"toNode": "query-gap",
+			"toSide": "left",
+			"toEnd": "arrow",
+			"label": "信息不足",
+			"color": "1"
+		},
+		{
+			"id": "q07-yes",
+			"fromNode": "query-synthesize",
+			"fromSide": "bottom",
+			"toNode": "query-archive-decision",
+			"toSide": "top",
+			"toEnd": "arrow"
+		},
+		{
+			"id": "q07-no",
+			"fromNode": "query-gap",
+			"fromSide": "bottom",
+			"toNode": "query-archive-decision",
+			"toSide": "top",
+			"toEnd": "arrow"
+		},
+		{
+			"id": "q08-archive",
+			"fromNode": "query-archive-decision",
+			"fromSide": "left",
+			"toNode": "query-archive",
+			"toSide": "top",
+			"label": "归档",
+			"toEnd": "arrow",
+			"color": "5"
+		},
+		{
+			"id": "q08-output",
+			"fromNode": "query-archive-decision",
+			"fromSide": "right",
+			"toNode": "query-output",
+			"toSide": "top",
+			"label": "直接输出",
+			"toEnd": "arrow",
+			"color": "4"
+		},
+		{
+			"id": "q09a",
+			"fromNode": "query-archive",
+			"fromSide": "bottom",
+			"toNode": "query-log",
+			"toSide": "top",
+			"toEnd": "arrow"
+		},
+		{
+			"id": "q09b",
+			"fromNode": "query-output",
+			"fromSide": "bottom",
+			"toNode": "query-log",
+			"toSide": "top",
+			"toEnd": "arrow"
+		},
+		{
+			"id": "q10",
+			"fromNode": "query-log",
+			"fromSide": "bottom",
+			"toNode": "query-end",
+			"toSide": "top",
+			"toEnd": "arrow"
+		}
+	]
+}

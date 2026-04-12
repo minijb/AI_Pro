@@ -1,0 +1,104 @@
+{
+	"nodes": [
+		{
+			"id": "vlte000node00000",
+			"type": "group",
+			"x": -80,
+			"y": -80,
+			"width": 960,
+			"height": 480,
+			"label": "Project Documentation"
+		},
+		{
+			"id": "vlte001node00001",
+			"type": "file",
+			"x": 0,
+			"y": 0,
+			"width": 400,
+			"height": 350,
+			"file": "Projects/Project Overview.md",
+			"color": "4"
+		},
+		{
+			"id": "vlte002node00002",
+			"type": "file",
+			"x": 480,
+			"y": 0,
+			"width": 380,
+			"height": 200,
+			"file": "Projects/Project Overview.md",
+			"subpath": "#Architecture"
+		},
+		{
+			"id": "vlte003node00003",
+			"type": "file",
+			"x": 480,
+			"y": 240,
+			"width": 380,
+			"height": 100,
+			"file": "Assets/diagram.png"
+		},
+		{
+			"id": "vlte004node00004",
+			"type": "file",
+			"x": 0,
+			"y": 500,
+			"width": 400,
+			"height": 300,
+			"file": "Resources/API Reference.pdf"
+		},
+		{
+			"id": "vlte005node00005",
+			"type": "link",
+			"x": 480,
+			"y": 500,
+			"width": 400,
+			"height": 300,
+			"url": "https://docs.example.com/api/v2"
+		},
+		{
+			"id": "vlte006node00006",
+			"type": "text",
+			"x": 0,
+			"y": 860,
+			"width": 880,
+			"height": 100,
+			"text": "## Notes\n\n- File nodes show inline previews for images and PDFs\n- `subpath` links to a specific heading or block within a note\n- Link nodes render web pages as iframes (Ctrl/Cmd+click to open in browser)",
+			"color": "3"
+		}
+	],
+	"edges": [
+		{
+			"id": "vlte000edge00000",
+			"fromNode": "vlte001node00001",
+			"toNode": "vlte002node00002",
+			"fromSide": "right",
+			"toSide": "left",
+			"label": "section detail"
+		},
+		{
+			"id": "vlte001edge00001",
+			"fromNode": "vlte002node00002",
+			"toNode": "vlte003node00003",
+			"fromSide": "bottom",
+			"toSide": "top"
+		},
+		{
+			"id": "vlte002edge00002",
+			"fromNode": "vlte001node00001",
+			"toNode": "vlte004node00004",
+			"fromSide": "bottom",
+			"toSide": "top",
+			"label": "reference"
+		},
+		{
+			"id": "vlte003edge00003",
+			"fromNode": "vlte004node00004",
+			"toNode": "vlte005node00005",
+			"fromSide": "right",
+			"toSide": "left",
+			"label": "online version",
+			"color": "5"
+		}
+	]
+}

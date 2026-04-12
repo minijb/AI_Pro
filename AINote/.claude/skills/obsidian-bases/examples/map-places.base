@@ -1,0 +1,69 @@
+# Places Map (Map View)
+#
+# Display places as pins on an interactive map.
+# Requires: Obsidian 1.10+ and the Maps plugin.
+#
+# Prerequisites: Notes should have these frontmatter properties:
+#   - coordinates: list [lat, lng] or text "lat, lng"
+#   - icon: text (Lucide icon name, e.g., "landmark", "utensils", "hotel")
+#   - color: text (hex color or CSS color name)
+#   - category: text (e.g., "Restaurant", "Hotel", "Attraction")
+#   - tags: should include "place"
+#
+# Example note frontmatter:
+# ---
+# coordinates:
+#   - "48.85837"
+#   - "2.294481"
+# icon: "landmark"
+# color: "#e74c3c"
+# category: "Attraction"
+# tags:
+#   - place
+# ---
+
+filters:
+  and:
+    - file.hasTag("place")
+
+formulas:
+  google_maps: 'link("https://www.google.com/maps/search/" + file.name.replace(" ", "+"), "Google Maps")'
+
+properties:
+  category:
+    displayName: Category
+  formula.google_maps:
+    displayName: Google Maps
+
+views:
+  - type: map
+    name: "All Places"
+    order:
+      - file.name
+      - note.category
+      - formula.google_maps
+
+  - type: map
+    name: "Restaurants"
+    filters:
+      and:
+        - 'category == "Restaurant"'
+    order:
+      - file.name
+      - note.category
+
+  - type: table
+    name: "Place List"
+    order:
+      - file.name
+      - note.category
+      - note.coordinates
+      - formula.google_maps
+
+# Map tile options (set in view settings):
+#   Dark:     https://tiles.openfreemap.org/styles/dark
+#   Positron: https://tiles.openfreemap.org/styles/positron
+#   Liberty:  https://tiles.openfreemap.org/styles/liberty
+
+# Source: https://obsidian.md/help/bases/views/map
+# Source: https://obsidian.md/help/bases/syntax
