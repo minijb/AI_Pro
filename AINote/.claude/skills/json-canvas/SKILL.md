@@ -76,6 +76,10 @@ Read from `examples/` when you need concrete patterns:
 2. **Text / File / Link 节点** — 按层级从中心向外排列
 3. **Edge 连接** — 父子关系优先，再添加交叉引用
 
+> **尺寸计算**：每个 Text 节点的 `width` / `height` 必须用脚本计算：
+> `python ${CLAUDE_SKILL_DIR}/scripts/calc_node_size.py --path your-canvas.canvas`
+> 禁止使用固定尺寸表。
+
 ### Step 5 — 碰撞检测 (Collision Detection)
 
 生成后验证：
@@ -92,23 +96,51 @@ Read from `examples/` when you need concrete patterns:
 - [ ] 颜色格式统一（preset 色 或 `#RRGGBB`，不混用）
 - [ ] Group 节点在 nodes 数组中排在 contained nodes 之前
 - [ ] 无 Emoji（用颜色或文字标签替代）
+- [ ] **所有节点尺寸足够**：`python ${CLAUDE_SKILL_DIR}/scripts/calc_node_size.py --path your-canvas.canvas` 无 "TOO SMALL" 警告
 
 ---
 
-## Node 尺寸标准
+## 节点动态尺寸计算
 
-根据内容长度确定节点尺寸：
+> **重要**：JSON Canvas 没有自动高度调整功能。每次创建节点前，必须先用脚本计算尺寸，禁止使用固定尺寸表。
 
-| 内容长度 | 宽度 | 高度 | 适用场景 |
-|---|---|---|---|
-| 短（< 30 字符） | 220px | 100px | 标签、术语 |
-| 中等（30–80 字符） | 260px | 120px | 要点、列表 |
-| 长（80–150 字符） | 320px | 140px | 说明、描述 |
-| 超长（> 150 字符） | 320px | 180px | 段落、代码 |
-| 文件嵌入 | 300–500px | 200–500px | 图片、PDF |
-| 链接嵌入 | 400px | 300px | 网页 |
+### 使用方式
 
-> 节点内边距自动包含在宽高中，无需额外计算。
+```bash
+# 检查 canvas 文件中所有节点的尺寸问题
+python ${CLAUDE_SKILL_DIR}/scripts/calc_node_size.py --path your-canvas.canvas
+
+# 计算单条文本的理想尺寸
+python ${CLAUDE_SKILL_DIR}/scripts/calc_node_size.py --text "## 标题\n\n内容内容"
+```
+
+### 算法规则
+
+每次创建节点前，用脚本算出 `width` / `height`，填入 JSON。**禁止直接指定固定宽高**。
+
+**字符像素宽度：**
+| 字符类型 | 每字符 | 示例 |
+|---|---|---|
+| CJK（中文/日/韩） | 8px | 一、个、甲 |
+| Emoji | 14px | 📥、✨、⚠ |
+| 英文/数字/路径符号 | 6px | a、2026、./-_: |
+| 其他标点 | 3px | , . （）/ |
+
+**尺寸公式：**
+```
+宽度 = max(220, 最长行像素 + 40)  → 向上取整到 20 的倍数
+高度 = 行数 × 20 + 40              → 向上取整到 20 的倍数
+```
+
+**特殊处理 — 装饰性箭头节点：**
+纯箭头符号（`↓` `→` `←` `↑` `•`）或短箭头标签（如 `↓ 有` `→ 无`）保持小尺寸 **60×60**，不受算法约束。
+
+### 创建节点流程
+
+1. 编写节点的 `text` 内容
+2. 运行脚本：`python ${CLAUDE_SKILL_DIR}/scripts/calc_node_size.py --path your-canvas.canvas`
+3. 将输出的理想尺寸填入 `width` / `height` 字段
+4. 写入节点 JSON
 
 ---
 

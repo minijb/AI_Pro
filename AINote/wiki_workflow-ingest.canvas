@@ -5,8 +5,8 @@
 			"type": "text",
 			"x": 0,
 			"y": -500,
-			"width": 340,
-			"height": 100,
+			"width": 220,
+			"height": 120,
 			"text": "## 📥 Ingest 入口\n\n用户说「处理这个源」或「ingest」\n触发 `wiki-ingest-agent`",
 			"color": "4"
 		},
@@ -15,8 +15,8 @@
 			"type": "text",
 			"x": 0,
 			"y": -320,
-			"width": 340,
-			"height": 100,
+			"width": 220,
+			"height": 140,
 			"text": "## 🔍 检查入口\n\n`raw/_input/files/`\n\n只检查此处，不扫描 raw/ 子目录"
 		},
 		{
@@ -24,8 +24,8 @@
 			"type": "text",
 			"x": 0,
 			"y": -140,
-			"width": 340,
-			"height": 80,
+			"width": 220,
+			"height": 120,
 			"text": "## 🤔 文件存在？\n\n**是** → 分析文件类型\n**否** → 结束，无需处理",
 			"color": "3"
 		},
@@ -34,8 +34,8 @@
 			"type": "text",
 			"x": 0,
 			"y": 60,
-			"width": 340,
-			"height": 120,
+			"width": 220,
+			"height": 200,
 			"text": "## 📂 分析文件类型\n\n- **article** → 网页文章\n- **paper** → 论文\n- **book** → 书籍\n- **video** → 视频/字幕\n- **podcast** → 播客\n- **diary** → 日记"
 		},
 		{
@@ -43,8 +43,8 @@
 			"type": "text",
 			"x": 0,
 			"y": 260,
-			"width": 340,
-			"height": 140,
+			"width": 220,
+			"height": 220,
 			"text": "## 🏷️ 判断 wiki 分类\n\n- **00_日记**\n- **01_语言**\n- **02_编程工具**\n- **03_项目**\n- **04_领域**\n- **05_综合**\n- **06_游戏开发**"
 		},
 		{
@@ -72,8 +72,8 @@
 			"type": "text",
 			"x": 0,
 			"y": 840,
-			"width": 340,
-			"height": 100,
+			"width": 240,
+			"height": 120,
 			"text": "## 🏷️ 生成 frontmatter\n\ntitle / created / updated\ndescription ≤30字 / tags / aliases",
 			"color": "5"
 		},
@@ -82,8 +82,8 @@
 			"type": "text",
 			"x": 0,
 			"y": 1020,
-			"width": 340,
-			"height": 80,
+			"width": 220,
+			"height": 100,
 			"text": "## 🚚 移动到归档目录\n\n`raw/{category}/`",
 			"color": "3"
 		},
@@ -92,8 +92,8 @@
 			"type": "text",
 			"x": 0,
 			"y": 1180,
-			"width": 340,
-			"height": 100,
+			"width": 220,
+			"height": 120,
 			"text": "## 📋 更新索引文件\n\nindex.md / index_by_category.md\nindex_by_time.md / index_XX_xxx.md"
 		},
 		{
@@ -101,8 +101,8 @@
 			"type": "text",
 			"x": 0,
 			"y": 1360,
-			"width": 340,
-			"height": 80,
+			"width": 220,
+			"height": 100,
 			"text": "## 📝 追加 log.md\n\n`## [YYYY-MM-DD] ingest | Title`"
 		},
 		{
@@ -110,8 +110,8 @@
 			"type": "text",
 			"x": 0,
 			"y": 1520,
-			"width": 340,
-			"height": 100,
+			"width": 260,
+			"height": 120,
 			"text": "## 📊 生成 ingest 报告\n\n`raw/_input/reports/{时间}report-{slug}.md`\n包含：处理摘要 / 提取要点 / 关联页面",
 			"color": "6"
 		},
@@ -120,8 +120,8 @@
 			"type": "text",
 			"x": 0,
 			"y": 1700,
-			"width": 340,
-			"height": 120,
+			"width": 220,
+			"height": 160,
 			"text": "## 🧠 更新 Memory\n\n- `Memory/raw_stats.md`\n- `Memory/relationships/`\n- `Memory/stats/`\n- `Memory/focus_tracking.md`",
 			"color": "4"
 		},
