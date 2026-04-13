@@ -13,6 +13,7 @@ This is a **Claude Code skill library** — a collection of self-contained skill
 | `emmylua-annotation` | EmmyLua type annotations for Lua | Lua type annotation work (`@class`, `@param`, `@field`, etc.) |
 | `obsidian-bases` | Obsidian `.base` database-like views | Creating/editing `.base` files, note database views |
 | `obsidian-markdown` | Obsidian Flavored Markdown | Writing/editing `.md` files for Obsidian vaults |
+| `agent-creator` | Claude Code subagent creation | Creating custom agents/subagents, agent configuration, multi-agent workflows |
 | `skill-creator` | Skill creation, eval, and optimization | Creating/modifying skills, running evals, benchmarking, improving trigger descriptions |
 
 ## Repository Layout
@@ -41,7 +42,7 @@ The `skill-creator` skill is more complex, including `scripts/` (Python eval/ben
 
 ## Language
 
-The `emmylua-annotation` skill is written in Chinese (zh-CN). The `obsidian-bases` and `obsidian-markdown` skills are in English. Match the language of the existing skill when editing.
+The `emmylua-annotation` and `agent-creator` skills are written in Chinese (zh-CN). The `obsidian-bases` and `obsidian-markdown` skills are in English. Match the language of the existing skill when editing.
 
 ## Creating or Modifying Skills
 

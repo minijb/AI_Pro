@@ -1,0 +1,38 @@
+{
+  "skill_name": "agent-creator",
+  "test_date": "2026-04-10",
+  "evals": [
+    {
+      "id": 1,
+      "name": "api-monitor-agent",
+      "prompt": "我需要创建一个 agent 来监控我们的 REST API 健康状态。它应该能定期检查各个端点的响应时间和状态码，发现异常时生成报告。只需要读取能力和运行 curl 命令。放在项目级别。",
+      "expected_output": "生成一个完整的 agent markdown 文件，包含正确的 frontmatter（tools: Bash, Read, Grep, Glob 或类似只读+Bash组合），合理的 model 选择，专注于 API 监控的系统提示，明确的输出格式",
+      "test_type": "基础创建 - 自定义需求",
+      "files": []
+    },
+    {
+      "id": 2,
+      "name": "security-scanner-agent",
+      "prompt": "帮我做一个安全扫描 agent。要求：1) 只能读取代码不能修改 2) 能运行一些检查命令比如 npm audit 3) 需要 hooks 来限制只能运行安全相关的命令 4) 扫描结果要按严重程度分类 5) 放在用户级别以便跨项目使用",
+      "expected_output": "生成包含 hooks 配置的安全扫描 agent，工具权限正确限制为只读+受限 Bash，使用 PreToolUse hook 验证命令，有清晰的输出分级格式，存储位置为 ~/.claude/agents/",
+      "test_type": "高级功能 - Hooks + 安全约束",
+      "files": []
+    },
+    {
+      "id": 3,
+      "name": "docs-generator-agent",
+      "prompt": "create an agent that can generate API documentation from source code. It should read the code, understand the endpoints and data models, and produce markdown documentation. It needs to write files. Use sonnet model. Also give it memory so it can learn the project's documentation style over time.",
+      "expected_output": "生成带有 memory: project 配置的文档生成 agent，工具包含 Read/Write/Edit/Grep/Glob，model: sonnet，系统提示包含文档生成工作流和记忆管理指令",
+      "test_type": "高级功能 - Memory + 英文输入",
+      "files": []
+    },
+    {
+      "id": 4,
+      "name": "fullstack-coordinator",
+      "prompt": "我们团队在做一个全栈项目，前端 React 后端 Node.js。我想要一个协调型 agent 来管理代码review流程：先用 researcher 分析改动范围，再分别用 frontend-reviewer 和 backend-reviewer 审查前后端代码，最后用 test-runner 跑测试。需要作为主线程运行。",
+      "expected_output": "生成协调编排型 agent，使用 Agent(researcher, frontend-reviewer, backend-reviewer, test-runner) 限制可调度类型，model: opus，包含清晰的多步骤协调工作流，说明需要作为 --agent 主线程运行，提供配套的子 agent 定义或指引",
+      "test_type": "复杂场景 - 多 Agent 协调",
+      "files": []
+    }
+  ]
+}

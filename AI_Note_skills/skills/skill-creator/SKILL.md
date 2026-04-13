@@ -74,7 +74,7 @@ Based on the user interview, fill in the frontmatter and instructions:
   - `model` / `effort` — override model or effort level
   - `paths` — glob patterns limiting when the skill auto-activates
   - `hooks` — skill-scoped hooks (same format as settings.json)
-  - `shell` — `bash` or `powershell` for `` !`command` `` blocks
+  - `shell` — `bash` or `powershell`, controls the shell used for dynamic context injection (see `references/skill-features.md`)
 
   See `references/schemas.md` (Frontmatter Schema section) for the complete field reference with types and defaults. See `references/skill-features.md` for detailed usage examples.
 - **the rest of the skill :)**
@@ -161,7 +161,7 @@ When drafting a skill, consider whether it needs any of these capabilities. Read
 
 **String substitutions** — Use `$ARGUMENTS` (or `$0`, `$1` for positional args), `${CLAUDE_SESSION_ID}`, and `${CLAUDE_SKILL_DIR}` as dynamic placeholders in skill content. They are replaced before Claude sees the content.
 
-**Dynamic context injection** — Use `` !`command` `` to run shell commands as preprocessing. Output replaces the placeholder. Example: `` !`gh pr diff` `` injects the actual PR diff. To enable extended thinking, include the word `ultrathink` in the skill content.
+**Dynamic context injection** — Prefix a backtick-wrapped command with `"!"` to run it as shell preprocessing. The command output replaces the placeholder before Claude sees the content. For example, `"!"` followed by `` `gh pr diff` `` injects the actual PR diff. See `references/skill-features.md` for full syntax and examples. To enable extended thinking, include the word `ultrathink` in the skill content.
 
 **Subagent execution** — Add `context: fork` to run the skill in an isolated subagent. Use `agent` to select the type (`Explore` for read-only research, `Plan` for design, or custom agents from `.claude/agents/`). Only use for skills with clear task instructions, not pure reference content.
 

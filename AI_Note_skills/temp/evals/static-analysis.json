@@ -1,0 +1,254 @@
+{
+  "skill_name": "agent-creator",
+  "analysis_date": "2026-04-10",
+  "checks": [
+    {
+      "category": "Frontmatter Quality",
+      "item": "name: valid kebab-case",
+      "status": "pass",
+      "detail": "'agent-creator' is valid kebab-case, lowercase letters and hyphens only."
+    },
+    {
+      "category": "Frontmatter Quality",
+      "item": "name: length <= 64 chars",
+      "status": "pass",
+      "detail": "'agent-creator' is 13 characters, well under the 64-char limit."
+    },
+    {
+      "category": "Frontmatter Quality",
+      "item": "description: present and non-empty",
+      "status": "pass",
+      "detail": "Description is present with substantial content covering purpose, trigger scenarios, and alternate phrasings."
+    },
+    {
+      "category": "Frontmatter Quality",
+      "item": "description: length <= 1024 chars",
+      "status": "pass",
+      "detail": "Description is approximately 280-320 characters (mix of CJK and ASCII), well under the 1024-char limit."
+    },
+    {
+      "category": "Frontmatter Quality",
+      "item": "description: front-loads key use cases within 250 chars",
+      "status": "warning",
+      "detail": "The core purpose ('创建 Claude Code 自定义 subagent') is front-loaded, but the first 250 chars cut off mid-sentence in the trigger scenario list. The most important functional description is within 250 chars, but some trigger phrases are truncated. Consider reordering to put the highest-value triggers earlier."
+    },
+    {
+      "category": "Frontmatter Quality",
+      "item": "description: includes alternate phrasings",
+      "status": "pass",
+      "detail": "Includes both Chinese ('创建一个 agent', '新建子代理', '定义 agent', '做一个代码审查 agent') and English ('create an agent', 'new subagent', 'define agent', 'agent for X', 'set up a code reviewer', 'make a debugging agent') phrasings."
+    },
+    {
+      "category": "Frontmatter Quality",
+      "item": "description: is 'pushy' enough",
+      "status": "warning",
+      "detail": "Description covers trigger scenarios well but lacks proactive language like 'Use proactively when...' or 'Trigger automatically when...'. It only lists scenarios passively ('当用户想要...'). Adding proactive trigger instructions would improve auto-invocation rates."
+    },
+    {
+      "category": "Frontmatter Quality",
+      "item": "missing fields assessment",
+      "status": "pass",
+      "detail": "No critical fields are missing. The skill is a knowledge/task hybrid that should be both user-invocable and model-invocable (defaults). No need for disable-model-invocation, context:fork, or allowed-tools since this skill generates files as part of the main conversation."
+    },
+    {
+      "category": "SKILL.md Body Quality",
+      "item": "line count under 500",
+      "status": "pass",
+      "detail": "SKILL.md is 218 lines, well under the 500-line limit. Good token efficiency."
+    },
+    {
+      "category": "SKILL.md Body Quality",
+      "item": "clear structure and progressive disclosure",
+      "status": "pass",
+      "detail": "Excellent structure: concept intro (What is Subagent) -> file format -> storage -> creation workflow (4 steps) -> type reference table -> core fields -> advanced features -> best practices -> guidelines. Progressive disclosure is well-implemented."
+    },
+    {
+      "category": "SKILL.md Body Quality",
+      "item": "token optimization via references",
+      "status": "pass",
+      "detail": "SKILL.md correctly delegates detailed content to examples/ and references/. The type table links to example files. Advanced fields reference frontmatter-reference.md. Inline YAML snippets are minimal and illustrative, not exhaustive."
+    },
+    {
+      "category": "SKILL.md Body Quality",
+      "item": "creation workflow completeness",
+      "status": "pass",
+      "detail": "4-step workflow covers: (1) requirements gathering with 5 key questions, (2) type selection with reference table, (3) file generation, (4) validation and deployment with specific instructions. Complete and actionable."
+    },
+    {
+      "category": "SKILL.md Body Quality",
+      "item": "edge cases coverage",
+      "status": "warning",
+      "detail": "Missing coverage for: (1) what to do when user requirements don't match any template type (partially addressed with 'start from code-reviewer'), (2) naming conflicts between project and user-level agents, (3) debugging a non-working agent. These are minor gaps."
+    },
+    {
+      "category": "SKILL.md Body Quality",
+      "item": "subagent vs agent teams distinction",
+      "status": "pass",
+      "detail": "Clearly distinguishes subagent (single session, results return to main context) from Agent Teams (independent sessions, inter-communication). Good conceptual clarity."
+    },
+    {
+      "category": "Description Trigger Analysis",
+      "item": "Chinese trigger phrases",
+      "status": "pass",
+      "detail": "Covers: '创建一个 agent', '新建子代理', '定义 agent', '做一个代码审查 agent', plus general terms 'agent 配置', 'agent YAML'."
+    },
+    {
+      "category": "Description Trigger Analysis",
+      "item": "English trigger phrases",
+      "status": "pass",
+      "detail": "Covers: 'create an agent', 'new subagent', 'define agent', 'agent for X', 'set up a code reviewer', 'make a debugging agent'."
+    },
+    {
+      "category": "Description Trigger Analysis",
+      "item": "edge case phrasings",
+      "status": "warning",
+      "detail": "Missing some common alternate phrasings: 'make a bot', 'build an assistant', 'set up an AI helper', 'configure agent permissions', 'agent template', 'create a workflow'. Also missing Chinese variants like '搭建助手', '构建机器人', '配置权限'. These could cause trigger misses for users who don't use the exact 'agent/subagent' terminology."
+    },
+    {
+      "category": "Description Trigger Analysis",
+      "item": "multi-agent workflow triggers",
+      "status": "pass",
+      "detail": "Description includes '构建多 agent 工作流' which covers the multi-agent coordination use case."
+    },
+    {
+      "category": "Examples Quality",
+      "item": "researcher.md: self-contained and complete",
+      "status": "pass",
+      "detail": "Includes design rationale (3 bullet points), complete agent definition with valid YAML frontmatter, and usage examples (both auto-delegation and manual). Well-structured."
+    },
+    {
+      "category": "Examples Quality",
+      "item": "code-reviewer.md: self-contained and complete",
+      "status": "pass",
+      "detail": "Includes design rationale, complete agent definition, usage examples, and a variant section showing memory-enabled version. Excellent — demonstrates how to extend a base template."
+    },
+    {
+      "category": "Examples Quality",
+      "item": "debugger.md: self-contained and complete",
+      "status": "pass",
+      "detail": "Includes design rationale, complete agent definition with valid YAML, usage examples. Good methodology section (analyze, hypothesize, verify). Missing model field defaults to inherit, which is noted in design rationale."
+    },
+    {
+      "category": "Examples Quality",
+      "item": "test-runner.md: self-contained and complete",
+      "status": "pass",
+      "detail": "Includes design rationale, complete agent definition, usage examples, and a background-mode variant. Good test discovery flow and result reporting format."
+    },
+    {
+      "category": "Examples Quality",
+      "item": "db-reader.md: self-contained and complete",
+      "status": "pass",
+      "detail": "Excellent example: includes agent definition with hooks, a companion validation script with full bash code, usage examples, and a 'key takeaways' section explaining the hooks pattern is transferable. Best example for demonstrating advanced features."
+    },
+    {
+      "category": "Examples Quality",
+      "item": "coordinator.md: self-contained and complete",
+      "status": "pass",
+      "detail": "Includes design rationale, complete agent definition with Agent(type) syntax, usage examples (CLI and settings.json), and important caveats (subagent limitation, token cost, Agent Teams alternative). Good coverage of edge cases."
+    },
+    {
+      "category": "Examples Quality",
+      "item": "examples: YAML frontmatter validity",
+      "status": "warning",
+      "detail": "All examples embed the agent definition inside a markdown code block (```markdown ... ```), which is the correct format for a reference example. However, the YAML frontmatter in researcher.md has the 'description' field as a multi-line string without the '>' or '|' indicator — it appears as a single line that wraps. This is technically valid YAML but may confuse users who copy-paste it if line breaks are introduced. All other examples use '>' correctly."
+    },
+    {
+      "category": "Examples Quality",
+      "item": "examples: use case coverage",
+      "status": "pass",
+      "detail": "6 examples cover: read-only (researcher), review (code-reviewer), fix (debugger), test (test-runner), data (db-reader), coordination (coordinator). This spans the full spectrum from simple to complex, read-only to full-access."
+    },
+    {
+      "category": "Examples Quality",
+      "item": "examples: design rationale explained",
+      "status": "pass",
+      "detail": "Every example includes a 'Design Notes' section explaining tool choices, model selection, trigger strategy, and use cases. This teaches users the reasoning, not just the template."
+    },
+    {
+      "category": "Reference Docs Quality",
+      "item": "frontmatter-reference.md: field completeness",
+      "status": "pass",
+      "detail": "Covers 16+ fields across 12 sections: name, description, model, effort, maxTurns, tools, disallowedTools, permissionMode, hooks, memory, mcpServers, skills, background, isolation, color, initialPrompt. Comprehensive coverage of all documented agent frontmatter fields."
+    },
+    {
+      "category": "Reference Docs Quality",
+      "item": "frontmatter-reference.md: accuracy",
+      "status": "pass",
+      "detail": "Field descriptions, types, defaults, and allowed values are consistent with Claude Code documentation. Permission mode options, model resolution priority, tool control rules, and memory scoping are all accurately described."
+    },
+    {
+      "category": "Reference Docs Quality",
+      "item": "frontmatter-reference.md: organization",
+      "status": "pass",
+      "detail": "Well-organized with a numbered table of contents (12 sections), consistent table formatting for each field group, and clear section boundaries with horizontal rules. Easy to navigate."
+    },
+    {
+      "category": "Reference Docs Quality",
+      "item": "frontmatter-reference.md: examples for complex fields",
+      "status": "pass",
+      "detail": "Provides YAML examples for: hooks (PreToolUse and PostToolUse), MCP servers (inline and reference), field combination patterns (7 different patterns). Complex fields are well-illustrated."
+    },
+    {
+      "category": "Reference Docs Quality",
+      "item": "frontmatter-reference.md: line count",
+      "status": "pass",
+      "detail": "344 lines — substantial but appropriate for a complete field reference. Not loaded by default; only loaded on demand when specific field details are needed."
+    },
+    {
+      "category": "Language Consistency",
+      "item": "SKILL.md language",
+      "status": "pass",
+      "detail": "Written in Chinese (zh-CN) as required by project CLAUDE.md. All section headers, descriptions, table content, and instructional text are in Chinese."
+    },
+    {
+      "category": "Language Consistency",
+      "item": "examples/ language",
+      "status": "pass",
+      "detail": "All 6 example files are consistently written in Chinese (zh-CN). Section headers, design rationale, agent system prompts, and usage examples are all in Chinese."
+    },
+    {
+      "category": "Language Consistency",
+      "item": "references/ language",
+      "status": "pass",
+      "detail": "frontmatter-reference.md is written in Chinese (zh-CN). All table headers, field descriptions, section titles, and explanatory text are in Chinese."
+    },
+    {
+      "category": "Language Consistency",
+      "item": "English in descriptions (bilingual trigger support)",
+      "status": "pass",
+      "detail": "English phrases in the description field and within agent definitions ('Use proactively when...') are intentional for bilingual trigger support and are appropriate — they help the model trigger correctly regardless of the user's language."
+    },
+    {
+      "category": "Structural Integrity",
+      "item": "file organization follows convention",
+      "status": "pass",
+      "detail": "Follows the expected skill structure: SKILL.md (main doc), examples/ (6 reference examples), references/ (field reference). Clean separation of concerns."
+    },
+    {
+      "category": "Structural Integrity",
+      "item": "internal links are valid",
+      "status": "pass",
+      "detail": "SKILL.md links to examples/ files (6 links in the type table) and references/frontmatter-reference.md (2 links). All referenced files exist in the directory."
+    },
+    {
+      "category": "Structural Integrity",
+      "item": "no redundant content between files",
+      "status": "pass",
+      "detail": "SKILL.md provides a summary table of core fields; frontmatter-reference.md provides the complete reference. Examples demonstrate specific patterns. No significant content duplication detected."
+    }
+  ],
+  "summary": {
+    "total_checks": 38,
+    "passed": 33,
+    "warnings": 5,
+    "failed": 0,
+    "overall_score": "A"
+  },
+  "recommendations": [
+    "TRIGGER IMPROVEMENT: Add more edge-case trigger phrasings to the description. Consider adding: 'build an assistant', 'make a bot', 'agent template', 'configure agent permissions', '搭建助手', '配置权限'. This would improve trigger accuracy for users who don't use 'agent/subagent' terminology.",
+    "DESCRIPTION PUSHINESS: Add proactive trigger language to the description. Currently it uses passive framing ('当用户想要...'). Adding 'Use proactively when user discusses creating automated workflows or specialized AI assistants' would increase auto-invocation rates.",
+    "DESCRIPTION FRONT-LOADING: Reorganize the description so the most distinctive trigger phrases appear within the first 250 characters. Currently the core purpose is front-loaded well, but some English triggers may be truncated from the skill list display.",
+    "EDGE CASE COVERAGE: Consider adding a brief troubleshooting section or FAQ to SKILL.md covering: (1) what to do if an agent doesn't trigger, (2) naming conflict resolution between project and user-level agents, (3) how to debug a malfunctioning agent. This would add maybe 15-20 lines.",
+    "RESEARCHER EXAMPLE YAML: In researcher.md, the description field in the agent definition code block appears as a single long line without the YAML '>' multi-line indicator. While technically valid, adding '>' would be more consistent with the other examples and more robust for copy-paste usage."
+  ]
+}
