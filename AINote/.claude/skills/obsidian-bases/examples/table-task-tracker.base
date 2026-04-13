@@ -1,0 +1,78 @@
+# Task Tracker (Table View)
+#
+# This base creates a task management table with status tracking,
+# priority levels, due dates, and automatic overdue detection.
+#
+# Prerequisites: Notes should have these frontmatter properties:
+#   - status: text (e.g., "Todo", "In Progress", "Done")
+#   - priority: text (e.g., "High", "Medium", "Low")
+#   - due_date: date (e.g., 2025-06-01)
+#   - assignee: text
+#   - tags: should include "task"
+
+filters:
+  and:
+    - file.hasTag("task")
+
+formulas:
+  overdue: 'if(due_date < now() && status != "Done", "Overdue", "")'
+  days_remaining: 'if(due_date, ((due_date - today()) / 86400000).round(0), "")'
+
+properties:
+  status:
+    displayName: Status
+  priority:
+    displayName: Priority
+  due_date:
+    displayName: Due Date
+  assignee:
+    displayName: Assignee
+  formula.overdue:
+    displayName: Alert
+  formula.days_remaining:
+    displayName: Days Left
+
+views:
+  - type: table
+    name: "All Tasks"
+    order:
+      - file.name
+      - note.status
+      - note.priority
+      - note.due_date
+      - formula.days_remaining
+      - formula.overdue
+      - note.assignee
+    groupBy:
+      property: note.status
+      direction: ASC
+    summaries:
+      note.status: Filled
+
+  - type: table
+    name: "Overdue"
+    filters:
+      and:
+        - 'formula.overdue == "Overdue"'
+    order:
+      - file.name
+      - note.priority
+      - note.due_date
+      - formula.days_remaining
+      - note.assignee
+
+  - type: table
+    name: "High Priority"
+    filters:
+      and:
+        - 'priority == "High"'
+        - 'status != "Done"'
+    order:
+      - file.name
+      - note.status
+      - note.due_date
+      - note.assignee
+
+# Source: https://obsidian.md/help/bases/views/table
+# Source: https://obsidian.md/help/bases/syntax
+# Source: https://obsidian.md/help/formulas

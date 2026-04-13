@@ -1,0 +1,122 @@
+{
+	"nodes": [
+		{
+			"id": "tl00000000000001",
+			"type": "text",
+			"x": -160,
+			"y": -60,
+			"width": 300,
+			"height": 120,
+			"text": "# 2026 Q1 产品路线图\n\n从立项到 Beta 发布的关键里程碑",
+			"color": "4"
+		},
+		{
+			"id": "tl00000000000002",
+			"type": "text",
+			"x": 320,
+			"y": -60,
+			"width": 280,
+			"height": 120,
+			"text": "## 1月 — 规划阶段\n\n- 用户调研与分析\n- 需求文档 v1.0\n- 技术方案评审",
+			"color": "5"
+		},
+		{
+			"id": "tl00000000000003",
+			"type": "text",
+			"x": 640,
+			"y": -60,
+			"width": 280,
+			"height": 120,
+			"text": "## 2月 — 开发阶段\n\n- MVP 核心功能开发\n- 集成测试\n- 内部验收",
+			"color": "2"
+		},
+		{
+			"id": "tl00000000000004",
+			"type": "text",
+			"x": 960,
+			"y": -60,
+			"width": 280,
+			"height": 120,
+			"text": "## 3月 — 发布准备\n\n- Beta 用户测试\n- 性能优化\n- 文档完善",
+			"color": "1"
+		},
+		{
+			"id": "tl00000000000005",
+			"type": "group",
+			"x": 280,
+			"y": 100,
+			"width": 1000,
+			"height": 200,
+			"label": "Q1 2026",
+			"color": "3"
+		},
+		{
+			"id": "tl00000000000006",
+			"type": "text",
+			"x": 0,
+			"y": 400,
+			"width": 300,
+			"height": 100,
+			"text": "## 立项\n2026-01-15",
+			"color": "4"
+		},
+		{
+			"id": "tl00000000000007",
+			"type": "text",
+			"x": 0,
+			"y": 600,
+			"width": 300,
+			"height": 100,
+			"text": "## Alpha 版本\n2026-03-01",
+			"color": "2"
+		},
+		{
+			"id": "tl00000000000008",
+			"type": "text",
+			"x": 0,
+			"y": 800,
+			"width": 300,
+			"height": 100,
+			"text": "## 正式发布\n2026-09-01",
+			"color": "4"
+		}
+	],
+	"edges": [
+		{
+			"id": "etl0000000000001",
+			"fromNode": "tl00000000000002",
+			"fromSide": "left",
+			"toNode": "tl00000000000003",
+			"toSide": "right",
+			"toEnd": "arrow",
+			"color": "3"
+		},
+		{
+			"id": "etl0000000000002",
+			"fromNode": "tl00000000000003",
+			"fromSide": "left",
+			"toNode": "tl00000000000004",
+			"toSide": "right",
+			"toEnd": "arrow",
+			"color": "3"
+		},
+		{
+			"id": "etl0000000000003",
+			"fromNode": "tl00000000000006",
+			"fromSide": "bottom",
+			"toNode": "tl00000000000007",
+			"toSide": "top",
+			"toEnd": "arrow",
+			"color": "3"
+		},
+		{
+			"id": "etl0000000000004",
+			"fromNode": "tl00000000000007",
+			"fromSide": "bottom",
+			"toNode": "tl00000000000008",
+			"toSide": "top",
+			"toEnd": "arrow",
+			"color": "3"
+		}
+	]
+}

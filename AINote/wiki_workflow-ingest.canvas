@@ -1,0 +1,386 @@
+{
+	"nodes": [
+		{
+			"id": "ingest-entry",
+			"type": "text",
+			"x": 0,
+			"y": -500,
+			"width": 220,
+			"height": 120,
+			"text": "## 📥 Ingest 入口\n\n用户说「处理这个源」或「ingest」\n触发 `wiki-ingest-agent`",
+			"color": "4"
+		},
+		{
+			"id": "ingest-check",
+			"type": "text",
+			"x": 0,
+			"y": -320,
+			"width": 220,
+			"height": 140,
+			"text": "## 🔍 检查入口\n\n`raw/_input/files/`\n\n只检查此处，不扫描 raw/ 子目录"
+		},
+		{
+			"id": "ingest-decision",
+			"type": "text",
+			"x": 0,
+			"y": -140,
+			"width": 220,
+			"height": 120,
+			"text": "## 🤔 文件存在？\n\n**是** → 分析文件类型\n**否** → 结束，无需处理",
+			"color": "3"
+		},
+		{
+			"id": "ingest-type",
+			"type": "text",
+			"x": 0,
+			"y": 60,
+			"width": 220,
+			"height": 200,
+			"text": "## 📂 分析文件类型\n\n- **article** → 网页文章\n- **paper** → 论文\n- **book** → 书籍\n- **video** → 视频/字幕\n- **podcast** → 播客\n- **diary** → 日记"
+		},
+		{
+			"id": "ingest-category",
+			"type": "text",
+			"x": 0,
+			"y": 260,
+			"width": 220,
+			"height": 220,
+			"text": "## 🏷️ 判断 wiki 分类\n\n- **00_日记**\n- **01_语言**\n- **02_编程工具**\n- **03_项目**\n- **04_领域**\n- **05_综合**\n- **06_游戏开发**"
+		},
+		{
+			"id": "ingest-read",
+			"type": "text",
+			"x": 0,
+			"y": 480,
+			"width": 340,
+			"height": 100,
+			"text": "## 📖 读取源文件内容\n\n理解：主题 / 结构 / 关键信息 / 核心引用",
+			"color": "2"
+		},
+		{
+			"id": "ingest-create",
+			"type": "text",
+			"x": 0,
+			"y": 660,
+			"width": 340,
+			"height": 100,
+			"text": "## ✨ 创建 wiki 页面\n\nObsidian 格式：wikilinks / callouts / embeds",
+			"color": "5"
+		},
+		{
+			"id": "ingest-meta",
+			"type": "text",
+			"x": 0,
+			"y": 840,
+			"width": 240,
+			"height": 120,
+			"text": "## 🏷️ 生成 frontmatter\n\ntitle / created / updated\ndescription ≤30字 / tags / aliases",
+			"color": "5"
+		},
+		{
+			"id": "ingest-archive",
+			"type": "text",
+			"x": 0,
+			"y": 1020,
+			"width": 220,
+			"height": 100,
+			"text": "## 🚚 移动到归档目录\n\n`raw/{category}/`",
+			"color": "3"
+		},
+		{
+			"id": "ingest-index",
+			"type": "text",
+			"x": 0,
+			"y": 1180,
+			"width": 220,
+			"height": 120,
+			"text": "## 📋 更新索引文件\n\nindex.md / index_by_category.md\nindex_by_time.md / index_XX_xxx.md"
+		},
+		{
+			"id": "ingest-log",
+			"type": "text",
+			"x": 0,
+			"y": 1360,
+			"width": 220,
+			"height": 100,
+			"text": "## 📝 追加 log.md\n\n`## [YYYY-MM-DD] ingest | Title`"
+		},
+		{
+			"id": "ingest-report",
+			"type": "text",
+			"x": 0,
+			"y": 1520,
+			"width": 260,
+			"height": 120,
+			"text": "## 📊 生成 ingest 报告\n\n`raw/_input/reports/{时间}report-{slug}.md`\n包含：处理摘要 / 提取要点 / 关联页面",
+			"color": "6"
+		},
+		{
+			"id": "ingest-memory",
+			"type": "text",
+			"x": 0,
+			"y": 1700,
+			"width": 220,
+			"height": 160,
+			"text": "## 🧠 更新 Memory\n\n- `Memory/raw_stats.md`\n- `Memory/relationships/`\n- `Memory/stats/`\n- `Memory/focus_tracking.md`",
+			"color": "4"
+		},
+		{
+			"id": "ingest-end",
+			"type": "text",
+			"x": 0,
+			"y": 1900,
+			"width": 340,
+			"height": 80,
+			"text": "## ✅ Ingest 完成",
+			"color": "4"
+		},
+		{
+			"id": "ingest-no-files",
+			"type": "text",
+			"x": 500,
+			"y": -100,
+			"width": 260,
+			"height": 60,
+			"text": "无文件 → ✅ 结束",
+			"color": "4"
+		},
+		{
+			"id": "ingest-step-arrow-1",
+			"type": "text",
+			"x": -100,
+			"y": -280,
+			"width": 60,
+			"height": 30,
+			"text": "↓",
+			"color": "3"
+		},
+		{
+			"id": "ingest-step-arrow-2",
+			"type": "text",
+			"x": -100,
+			"y": -100,
+			"width": 60,
+			"height": 30,
+			"text": "↓",
+			"color": "3"
+		},
+		{
+			"id": "ingest-step-arrow-3",
+			"type": "text",
+			"x": -100,
+			"y": 100,
+			"width": 60,
+			"height": 30,
+			"text": "↓",
+			"color": "3"
+		},
+		{
+			"id": "ingest-step-arrow-4",
+			"type": "text",
+			"x": -100,
+			"y": 300,
+			"width": 60,
+			"height": 30,
+			"text": "↓",
+			"color": "3"
+		},
+		{
+			"id": "ingest-step-arrow-5",
+			"type": "text",
+			"x": -100,
+			"y": 520,
+			"width": 60,
+			"height": 30,
+			"text": "↓",
+			"color": "3"
+		},
+		{
+			"id": "ingest-step-arrow-6",
+			"type": "text",
+			"x": -100,
+			"y": 700,
+			"width": 60,
+			"height": 30,
+			"text": "↓",
+			"color": "3"
+		},
+		{
+			"id": "ingest-step-arrow-7",
+			"type": "text",
+			"x": -100,
+			"y": 880,
+			"width": 60,
+			"height": 30,
+			"text": "↓",
+			"color": "3"
+		},
+		{
+			"id": "ingest-step-arrow-8",
+			"type": "text",
+			"x": -100,
+			"y": 1060,
+			"width": 60,
+			"height": 30,
+			"text": "↓",
+			"color": "3"
+		},
+		{
+			"id": "ingest-step-arrow-9",
+			"type": "text",
+			"x": -100,
+			"y": 1220,
+			"width": 60,
+			"height": 30,
+			"text": "↓",
+			"color": "3"
+		},
+		{
+			"id": "ingest-step-arrow-10",
+			"type": "text",
+			"x": -100,
+			"y": 1400,
+			"width": 60,
+			"height": 30,
+			"text": "↓",
+			"color": "3"
+		},
+		{
+			"id": "ingest-step-arrow-11",
+			"type": "text",
+			"x": -100,
+			"y": 1560,
+			"width": 60,
+			"height": 30,
+			"text": "↓",
+			"color": "3"
+		},
+		{
+			"id": "ingest-step-arrow-12",
+			"type": "text",
+			"x": -100,
+			"y": 1760,
+			"width": 60,
+			"height": 30,
+			"text": "↓",
+			"color": "3"
+		}
+	],
+	"edges": [
+		{
+			"id": "e01",
+			"fromNode": "ingest-entry",
+			"fromSide": "bottom",
+			"toNode": "ingest-check",
+			"toSide": "top",
+			"toEnd": "arrow"
+		},
+		{
+			"id": "e02",
+			"fromNode": "ingest-check",
+			"fromSide": "bottom",
+			"toNode": "ingest-decision",
+			"toSide": "top",
+			"toEnd": "arrow"
+		},
+		{
+			"id": "e03-yes",
+			"fromNode": "ingest-decision",
+			"fromSide": "bottom",
+			"toNode": "ingest-type",
+			"toSide": "top",
+			"label": "有文件",
+			"toEnd": "arrow"
+		},
+		{
+			"id": "e03-no",
+			"fromNode": "ingest-decision",
+			"fromSide": "right",
+			"toNode": "ingest-no-files",
+			"toSide": "left",
+			"label": "无文件",
+			"toEnd": "arrow",
+			"color": "4"
+		},
+		{
+			"id": "e04",
+			"fromNode": "ingest-type",
+			"fromSide": "bottom",
+			"toNode": "ingest-category",
+			"toSide": "top",
+			"toEnd": "arrow"
+		},
+		{
+			"id": "e05",
+			"fromNode": "ingest-category",
+			"fromSide": "bottom",
+			"toNode": "ingest-read",
+			"toSide": "top",
+			"toEnd": "arrow"
+		},
+		{
+			"id": "e06",
+			"fromNode": "ingest-read",
+			"fromSide": "bottom",
+			"toNode": "ingest-create",
+			"toSide": "top",
+			"toEnd": "arrow"
+		},
+		{
+			"id": "e07",
+			"fromNode": "ingest-create",
+			"fromSide": "bottom",
+			"toNode": "ingest-meta",
+			"toSide": "top",
+			"toEnd": "arrow"
+		},
+		{
+			"id": "e08",
+			"fromNode": "ingest-meta",
+			"fromSide": "bottom",
+			"toNode": "ingest-archive",
+			"toSide": "top",
+			"toEnd": "arrow"
+		},
+		{
+			"id": "e09",
+			"fromNode": "ingest-archive",
+			"fromSide": "bottom",
+			"toNode": "ingest-index",
+			"toSide": "top",
+			"toEnd": "arrow"
+		},
+		{
+			"id": "e10",
+			"fromNode": "ingest-index",
+			"fromSide": "bottom",
+			"toNode": "ingest-log",
+			"toSide": "top",
+			"toEnd": "arrow"
+		},
+		{
+			"id": "e11",
+			"fromNode": "ingest-log",
+			"fromSide": "bottom",
+			"toNode": "ingest-report",
+			"toSide": "top",
+			"toEnd": "arrow"
+		},
+		{
+			"id": "e12",
+			"fromNode": "ingest-report",
+			"fromSide": "bottom",
+			"toNode": "ingest-memory",
+			"toSide": "top",
+			"toEnd": "arrow"
+		},
+		{
+			"id": "e13",
+			"fromNode": "ingest-memory",
+			"fromSide": "bottom",
+			"toNode": "ingest-end",
+			"toSide": "top",
+			"toEnd": "arrow"
+		}
+	]
+}

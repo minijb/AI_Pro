@@ -1,0 +1,156 @@
+{
+  "skill": "json-canvas",
+  "skill_path": "skills/json-canvas/",
+  "audit_date": "2026-04-11T01:40:45.396972",
+  "overall_score": 8.2,
+  "total_files": 10,
+  "example_files": 7,
+  "reference_files": 2,
+  "findings": [
+    {
+      "file": "examples/layout-mindmap.canvas",
+      "severity": "info",
+      "category": "json",
+      "message": "Valid JSON with all references intact"
+    },
+    {
+      "file": "examples/basic-text-nodes.canvas",
+      "severity": "info",
+      "category": "json",
+      "message": "Valid JSON with all references intact"
+    },
+    {
+      "file": "examples/vault-embedding.canvas",
+      "severity": "info",
+      "category": "json",
+      "message": "Valid JSON with all references intact"
+    },
+    {
+      "file": "examples/layout-tree.canvas",
+      "severity": "info",
+      "category": "json",
+      "message": "Valid JSON with all references intact"
+    },
+    {
+      "file": "examples/project-board.canvas",
+      "severity": "info",
+      "category": "json",
+      "message": "Valid JSON with all references intact"
+    },
+    {
+      "file": "examples/mind-map.canvas",
+      "severity": "info",
+      "category": "json",
+      "message": "Valid JSON with all references intact"
+    },
+    {
+      "file": "examples/layout-grid.canvas",
+      "severity": "info",
+      "category": "json",
+      "message": "Valid JSON with all references intact"
+    },
+    {
+      "file": "examples/layout-mindmap.canvas",
+      "severity": "warning",
+      "category": "grid_alignment",
+      "message": "Coordinates not 20px-grid-aligned: x=-150 (root001), x=250 (branch01/02/03), x=590 (leaf01/02/03/04), y=-50 (branch02)"
+    },
+    {
+      "file": "examples/mind-map.canvas",
+      "severity": "warning",
+      "category": "grid_alignment",
+      "message": "Coordinates not 20px-grid-aligned: x=-150 (root), x=-650/350 (branches), y=250 (branches)"
+    },
+    {
+      "file": "examples/vault-embedding.canvas",
+      "severity": "warning",
+      "category": "grid_alignment",
+      "message": "Coordinates not 20px-grid-aligned: y=250 (b1b2c3d4e5f60004)"
+    },
+    {
+      "file": "examples/layout-grid.canvas",
+      "severity": "warning",
+      "category": "collision",
+      "message": "Potential node collisions: grp_backlog <-> card02/03, grp_inprogress <-> card05"
+    },
+    {
+      "file": "examples/layout-tree.canvas",
+      "severity": "warning",
+      "category": "collision",
+      "message": "Potential node collisions: member01 <-> member02 (dx=240, dy=0)"
+    },
+    {
+      "file": "examples/mind-map.canvas",
+      "severity": "warning",
+      "category": "collision",
+      "message": "Potential node collisions: c1b2c3d4e5f60010 <-> c1b2c3d4e5f60011 (dx=0, dy=140)"
+    },
+    {
+      "file": "examples/project-board.canvas",
+      "severity": "warning",
+      "category": "collision",
+      "message": "Potential node collisions: grp_backlog <-> card11/12, grp_inprogress <-> card21"
+    },
+    {
+      "file": "examples/layout-grid.canvas",
+      "severity": "warning",
+      "category": "edge_direction",
+      "message": "Non-standard edge direction pairs: e04: fromSide=right, toSide=top (odd pair)"
+    },
+    {
+      "file": "examples/mind-map.canvas",
+      "severity": "warning",
+      "category": "edge_direction",
+      "message": "Non-standard edge direction pairs: ec1: left->bottom, ec2: right->bottom, ec3: left->top, ec4: right->top"
+    },
+    {
+      "file": "SKILL.md",
+      "severity": "info",
+      "category": "missing",
+      "message": "No Timeline layout reference file or example"
+    },
+    {
+      "file": "SKILL.md",
+      "severity": "info",
+      "category": "missing",
+      "message": "fromEnd field not shown in edge examples"
+    },
+    {
+      "file": "examples/",
+      "severity": "info",
+      "category": "naming",
+      "message": "mind-map.canvas and layout-mindmap.canvas have overlapping content"
+    }
+  ],
+  "dimensions": {
+    "structure": {
+      "score": 9,
+      "note": "Missing Timeline layout reference"
+    },
+    "consistency": {
+      "score": 7,
+      "note": "Examples violate 20px grid rule"
+    },
+    "json_quality": {
+      "score": 10,
+      "note": "All valid, all refs intact"
+    },
+    "spec_compliance": {
+      "score": 8,
+      "note": "Missing fromEnd, backgroundStyle examples"
+    },
+    "example_coverage": {
+      "score": 7,
+      "note": "4 layouts covered, Timeline missing"
+    },
+    "frontmatter": {
+      "score": 8,
+      "note": "Consider user-invocable: false"
+    }
+  },
+  "generated_files": {
+    "audit-report.md": "temp/audit-json-canvas/audit-report.md",
+    "real-case-learning-path.canvas": "temp/audit-json-canvas/real-case-learning-path.canvas",
+    "real-case-kanban.canvas": "temp/audit-json-canvas/real-case-kanban.canvas"
+  }
+}

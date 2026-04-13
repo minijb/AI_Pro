@@ -17,7 +17,12 @@
       "Bash(python -m scripts.quick_validate \"D:/AI Project/AI_Note_skills/skills/obsidian-bases\")",
       "Bash(python -m scripts.quick_validate \"D:/AI Project/AI_Note_skills/skills/obsidian-markdown\")",
       "Bash(python -m scripts.quick_validate \"D:/AI Project/AI_Note_skills/skills/skill-creator\")",
-      "Bash(python -m scripts.validate_agent \"../../temp/outputs/test-1/api-monitor.md\" \"../../temp/outputs/test-2/security-scanner.md\" \"../../temp/outputs/test-3/docs-generator.md\" \"../../temp/outputs/test-4/fullstack-coordinator.md\")"
+      "Bash(python -m scripts.validate_agent \"../../temp/outputs/test-1/api-monitor.md\" \"../../temp/outputs/test-2/security-scanner.md\" \"../../temp/outputs/test-3/docs-generator.md\" \"../../temp/outputs/test-4/fullstack-coordinator.md\")",
+      "WebFetch(domain:raw.githubusercontent.com)",
+      "Bash(mkdir -p /home/zhouhao/project/AI_Pro/AI_Note_skills/.claude/skills)",
+      "Bash(cp -r /home/zhouhao/.claude/skills/skill-creator /home/zhouhao/project/AI_Pro/AI_Note_skills/.claude/skills/)",
+      "Bash(gh api:*)",
+      "Bash(python3:*)"
     ]
   },
   "skipWebFetchPreflight": true

@@ -1,0 +1,109 @@
+# Project Dashboard (Table View with Formulas & Summaries)
+#
+# A comprehensive project tracking dashboard with calculated fields.
+#
+# Prerequisites: Notes should have these frontmatter properties:
+#   - status: text ("Planning", "Active", "On Hold", "Completed")
+#   - start_date: date
+#   - due_date: date
+#   - budget: number
+#   - spent: number
+#   - team_size: number
+#   - department: text
+#   - tags: should include "project"
+
+filters:
+  and:
+    - file.hasTag("project")
+
+formulas:
+  budget_remaining: "if(budget && spent, budget - spent, budget)"
+  budget_pct: 'if(budget && spent, (spent / budget * 100).round(1) + "%", "")'
+  days_to_deadline: 'if(due_date, ((due_date - today()) / 86400000).round(0), "")'
+  health: 'if(due_date < now() && status != "Completed", "At Risk", if(budget && spent && spent > budget * 0.9, "Watch", "On Track"))'
+  duration_weeks: 'if(start_date && due_date, ((due_date - start_date) / 604800000).round(1), "")'
+
+properties:
+  status:
+    displayName: Status
+  start_date:
+    displayName: Start
+  due_date:
+    displayName: Deadline
+  budget:
+    displayName: Budget
+  spent:
+    displayName: Spent
+  team_size:
+    displayName: Team
+  department:
+    displayName: Dept
+  formula.budget_remaining:
+    displayName: Remaining
+  formula.budget_pct:
+    displayName: "Budget Used"
+  formula.days_to_deadline:
+    displayName: "Days Left"
+  formula.health:
+    displayName: Health
+  formula.duration_weeks:
+    displayName: "Duration (wks)"
+
+summaries:
+  total_budget: "values.reduce(acc + value, 0)"
+  avg_team: "values.mean().round(1)"
+
+views:
+  - type: table
+    name: "Dashboard"
+    order:
+      - file.name
+      - note.status
+      - formula.health
+      - note.department
+      - note.due_date
+      - formula.days_to_deadline
+      - note.budget
+      - note.spent
+      - formula.budget_pct
+      - note.team_size
+    groupBy:
+      property: note.status
+      direction: ASC
+    summaries:
+      note.budget: Sum
+      note.spent: Sum
+      note.team_size: Sum
+
+  - type: table
+    name: "At Risk"
+    filters:
+      and:
+        - 'formula.health != "On Track"'
+        - 'status != "Completed"'
+    order:
+      - file.name
+      - formula.health
+      - note.due_date
+      - formula.days_to_deadline
+      - formula.budget_pct
+
+  - type: table
+    name: "By Department"
+    groupBy:
+      property: note.department
+      direction: ASC
+    order:
+      - file.name
+      - note.status
+      - note.budget
+      - note.spent
+      - formula.budget_remaining
+    summaries:
+      note.budget: Sum
+      note.spent: Sum
+
+# Source: https://obsidian.md/help/bases/views/table
+# Source: https://obsidian.md/help/bases/syntax
+# Source: https://obsidian.md/help/formulas
+# Source: https://obsidian.md/help/bases/functions

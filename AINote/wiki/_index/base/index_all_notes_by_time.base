@@ -1,0 +1,33 @@
+# Wiki 全局笔记索引（按更新时间）
+#
+# 筛选 wiki/ 下所有笔记，按 file.mtime 分组展示
+# 显示：标题、创建时间、更新时间、一句话描述
+
+filters:
+  and:
+    - file.inFolder("wiki/")
+    - 'file.path != "wiki/index.md"'
+    - 'file.path != "wiki/log.md"'
+    - not:
+        - file.inFolder("wiki/_index/")
+    - not:
+        - file.inFolder("wiki/07_misc/")
+
+properties:
+  title:
+    displayName: 索引
+  created:
+    displayName: 创建时间
+  updated:
+    displayName: 更新时间
+  description:
+    displayName: 描述
+
+views:
+  - type: table
+    name: "全部笔记（按更新时间）"
+    order:
+      - file.mtime
+    groupBy:
+      property: file.mtime
+      direction: DESC
