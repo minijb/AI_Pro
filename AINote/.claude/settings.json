@@ -1,0 +1,13 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(python \".claude/skills/json-canvas/scripts/canvas_layout.py\" wiki_workflow-ingest.canvas --fix --fix-sizes)",
+      "Bash(python \".claude/skills/json-canvas/scripts/canvas_layout.py\" wiki_workflow-query.canvas --fix --fix-sizes)",
+      "Bash(python \".claude/skills/json-canvas/scripts/canvas_layout.py\" wiki_workflow-lint.canvas --fix --fix-sizes)",
+      "Bash(python \".claude/skills/json-canvas/scripts/canvas_layout.py\" wiki_workflow-process.canvas --fix --fix-sizes)",
+      "Bash(python \".claude/skills/json-canvas/scripts/canvas_layout.py\" wiki_workflow-analyze.canvas --fix --fix-sizes)",
+      "Edit(/.claude/skills/json-canvas/**)",
+      "Bash(python -c \"import json; json.load\\(open\\('wiki_workflow.canvas', encoding='utf-8'\\)\\); print\\('JSON valid ✓'\\)\")"
+    ]
+  }
+}

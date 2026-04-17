@@ -47,6 +47,7 @@ paths: "AI_Note/**/*"
    - 书籍 → `raw/books/`
    - 视频字幕/笔记 → `raw/videos/`
    - 播客笔记 → `raw/podcasts/`
+   - 个人随手笔记（对话记录、灵感、速记）→ `raw/notes/`
    - 日记/随手记 → `raw/diary/`
    - 其他 → 询问用户确认分类
 3. 提取 tags（3-5 个关键词）
@@ -172,7 +173,7 @@ tags: [{tag1}, {tag2}]
 created: {YYYY-MM-DD}
 updated: {YYYY-MM-DD}
 source: raw/{category}/{filename}.md
-source-type: {article|paper|book|video|podcast}
+source-type: {article|paper|book|video|podcast|notes}
 ---
 
 ## 元信息

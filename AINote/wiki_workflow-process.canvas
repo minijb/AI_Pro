@@ -1,0 +1,31 @@
+{
+	"nodes":[
+		{"id":"pro0000center0001","type":"text","x":-150,"y":0,"width":440,"height":120,"text":"# Wiki Process 工作流","color":"4"},
+		{"id":"pro0001step00002","type":"text","x":-80,"y":300,"width":300,"height":260,"text":"## Step 1\n\n确定处理类型\nRefine / Merge / Split\nMigrate / Update\n选择最佳策略","color":"5"},
+		{"id":"pro0002step00003","type":"text","x":-80,"y":620,"width":300,"height":240,"text":"## Step 2\n\n读取目标页面\n分析核心信息\n识别冗余和缺失","color":"5"},
+		{"id":"pro0003step00004","type":"text","x":-110,"y":920,"width":360,"height":260,"text":"## Step 3\n\n执行处理操作\nRefine / Merge / Split / Migrate\n解决冲突\n复杂场景使用 json-canvas 可视化","color":"5"},
+		{"id":"pro0004step00005","type":"text","x":-90,"y":1240,"width":320,"height":260,"text":"## Step 4\n\n更新所有引用\nwikilink 指向旧页面的链接\n索引文件引用\n交叉引用关系","color":"5"},
+		{"id":"pro0005step00006","type":"text","x":-90,"y":1560,"width":320,"height":260,"text":"## Step 5\n\n更新 Memory\n`relationships/SUMMARY.md`\n`stats/SUMMARY.md`\n`focus_tracking.md`","color":"5"},
+		{"id":"pro0006step00007","type":"text","x":-80,"y":1880,"width":300,"height":200,"text":"## Step 6\n\n追加 `wiki/log.md`\n记录操作类型和涉及页面","color":"5"},
+		{"id":"pro0007branch009","type":"text","x":-470,"y":600,"width":320,"height":220,"text":"处理类型说明\nRefine：提取要点/去除冗余\nMerge：合并多页面\nSplit：拆分大页面\nMigrate：迁移分类","color":"3"},
+		{"id":"pro0008branch010","type":"text","x":-970,"y":900,"text":"Merge 策略\n新页面：创建合并页面\n追加：使用基础页追加\n冲突解决 + 删除旧页","width":320,"height":200,"color":"3"},
+		{"id":"pro0009branch011","type":"text","x":-490,"y":900,"width":320,"height":200,"text":"Split 策略\n按主题/时间/功能拆分\n创建父概览页面\n引用各子页面","color":"3"},
+		{"id":"pro0010branch012","type":"text","x":350,"y":300,"width":300,"height":160,"text":"触发词\n『整理一下』『精炼』\n『合并』『拆分』『迁移』","color":"6"},
+		{"id":"pro0011branch013","type":"text","x":350,"y":900,"width":360,"height":220,"text":"Memory 更新清单\n`relationships/SUMMARY.md`\n`relationships/pages/{slug}.md`\n`stats/SUMMARY.md`\n`stats/{subdirectory}.md`","color":"6"},
+		{"id":"pro0012branch014","type":"text","x":350,"y":1840,"width":300,"height":160,"text":"log.md 格式\n`## [YYYY-MM-DD] process`\n操作类型 + 涉及页面","color":"6"}
+	],
+	"edges":[
+		{"id":"proe0000e00001","fromNode":"pro0000center0001","fromSide":"bottom","toNode":"pro0001step00002","toSide":"top","toEnd":"arrow"},
+		{"id":"proe0001e00002","fromNode":"pro0001step00002","fromSide":"bottom","toNode":"pro0002step00003","toSide":"top","toEnd":"arrow"},
+		{"id":"proe0002e00003","fromNode":"pro0002step00003","fromSide":"bottom","toNode":"pro0003step00004","toSide":"top","toEnd":"arrow"},
+		{"id":"proe0003e00004","fromNode":"pro0003step00004","fromSide":"bottom","toNode":"pro0004step00005","toSide":"top","toEnd":"arrow"},
+		{"id":"proe0004e00005","fromNode":"pro0004step00005","fromSide":"bottom","toNode":"pro0005step00006","toSide":"top","toEnd":"arrow"},
+		{"id":"proe0005e00006","fromNode":"pro0005step00006","fromSide":"bottom","toNode":"pro0006step00007","toSide":"top","toEnd":"arrow"},
+		{"id":"proe0006e00007","fromNode":"pro0002step00003","fromSide":"left","toNode":"pro0007branch009","toSide":"right","label":"类型","color":"3"},
+		{"id":"proe0007e00008","fromNode":"pro0003step00004","fromSide":"left","toNode":"pro0008branch010","toSide":"right","label":"Merge","color":"3"},
+		{"id":"proe0008e00009","fromNode":"pro0003step00004","fromSide":"left","toNode":"pro0009branch011","toSide":"right","label":"Split","color":"3"},
+		{"id":"proe0009e00010","fromNode":"pro0000center0001","fromSide":"right","toNode":"pro0010branch012","toSide":"left","label":"触发","color":"6"},
+		{"id":"proe0010e00011","fromNode":"pro0005step00006","fromSide":"right","toNode":"pro0011branch013","toSide":"left","label":"Memory","color":"6"},
+		{"id":"proe0011e00012","fromNode":"pro0006step00007","fromSide":"right","toNode":"pro0012branch014","toSide":"left","label":"log","color":"6"}
+	]
+}

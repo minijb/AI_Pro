@@ -1,271 +1,33 @@
 {
-	"nodes": [
-		{
-			"id": "query-entry",
-			"type": "text",
-			"x": 0,
-			"y": -420,
-			"width": 220,
-			"height": 120,
-			"text": "## ❓ Query 入口\n\n用户问「关于 xxx」或「query」\n触发 `wiki-query-agent`",
-			"color": "4"
-		},
-		{
-			"id": "query-understand",
-			"type": "text",
-			"x": 0,
-			"y": -240,
-			"width": 220,
-			"height": 120,
-			"text": "## 🧠 理解问题意图\n\n用户想知道什么？什么类型的问题？\n定义 / 教程 / 对比 / 参考 / 综述"
-		},
-		{
-			"id": "query-scope",
-			"type": "text",
-			"x": 0,
-			"y": -80,
-			"width": 220,
-			"height": 120,
-			"text": "## 📂 确定搜索范围\n\n全部 wiki / 指定分类 / 指定页面\n根据问题关键词决定"
-		},
-		{
-			"id": "query-search",
-			"type": "text",
-			"x": 0,
-			"y": 80,
-			"width": 220,
-			"height": 140,
-			"text": "## 🔎 搜索 wiki 内容\n\n- 全文检索\n- wikilink 图遍历\n- frontmatter 属性查询",
-			"color": "2"
-		},
-		{
-			"id": "query-collect",
-			"type": "text",
-			"x": 0,
-			"y": 260,
-			"width": 220,
-			"height": 120,
-			"text": "## 📋 收集相关页面\n\n按相关性排序\n过滤噪音结果"
-		},
-		{
-			"id": "query-decision",
-			"type": "text",
-			"x": 0,
-			"y": 420,
-			"width": 220,
-			"height": 120,
-			"text": "## 🤔 有直接答案？\n\n**是** → 综合多页面内容\n**否** → 标记信息缺口",
-			"color": "3"
-		},
-		{
-			"id": "query-synthesize",
-			"type": "text",
-			"x": 0,
-			"y": 580,
-			"width": 220,
-			"height": 120,
-			"text": "## 🧩 综合多页面内容\n\n提取要点 / 关联引用\n形成完整、结构化的答案",
-			"color": "5"
-		},
-		{
-			"id": "query-gap",
-			"type": "text",
-			"x": 0,
-			"y": 580,
-			"width": 220,
-			"height": 140,
-			"text": "## ⚠️ 标记信息缺口\n\n诚实告知用户\n哪些方面缺乏资料\n建议补充方向",
-			"color": "1"
-		},
-		{
-			"id": "query-archive-decision",
-			"type": "text",
-			"x": 0,
-			"y": 760,
-			"width": 220,
-			"height": 120,
-			"text": "## 💾 归档决策\n\n有价值且完整 → 归档到 wiki\n一般性问题 → 直接输出",
-			"color": "3"
-		},
-		{
-			"id": "query-archive",
-			"type": "text",
-			"x": -200,
-			"y": 920,
-			"width": 220,
-			"height": 140,
-			"text": "## 💾 归档优质答案\n\n新建 Q&A 页面\n或补充到现有页面\n建立 wikilinks",
-			"color": "5"
-		},
-		{
-			"id": "query-output",
-			"type": "text",
-			"x": 200,
-			"y": 920,
-			"width": 220,
-			"height": 120,
-			"text": "## ✅ 直接输出答案\n\n不归档\n仅返回综合答案",
-			"color": "4"
-		},
-		{
-			"id": "query-log",
-			"type": "text",
-			"x": 0,
-			"y": 1100,
-			"width": 220,
-			"height": 100,
-			"text": "## 📝 追加 log.md\n\n`## [YYYY-MM-DD] query | Question`"
-		},
-		{
-			"id": "query-end",
-			"type": "text",
-			"x": 0,
-			"y": 1260,
-			"width": 340,
-			"height": 80,
-			"text": "## ✅ Query 完成",
-			"color": "4"
-		},
-		{
-			"id": "query-branch-yes",
-			"type": "text",
-			"x": -100,
-			"y": 330,
-			"width": 60,
-			"height": 30,
-			"text": "↓ 有",
-			"color": "4"
-		},
-		{
-			"id": "query-branch-no",
-			"type": "text",
-			"x": 200,
-			"y": 330,
-			"width": 60,
-			"height": 30,
-			"text": "→ 无",
-			"color": "1"
-		}
+	"nodes":[
+		{"id":"que0000center0001","type":"text","x":-150,"y":0,"width":400,"height":120,"text":"# Wiki Query 工作流","color":"4"},
+		{"id":"que0001step00002","type":"text","x":-140,"y":300,"width":380,"height":240,"text":"## Step 0\n\n读取 Memory 了解上下文\n`focus_tracking.md`\n`raw_stats.md` / `stats/SUMMARY.md`","color":"5"},
+		{"id":"que0002step00003","type":"text","x":-130,"y":600,"width":360,"height":240,"text":"## Step 1\n\n确定查询类型\nFactual / Comparative\nAnalytical / Exploratory / Gap","color":"5"},
+		{"id":"que0003step00004","type":"text","x":-140,"y":900,"width":380,"height":260,"text":"## Step 2\n\n定位相关页面\n`wiki/index.md`\n`wiki/_index/index_by_category.md`\n追踪 `[[wikilink]]` 引用链","color":"5"},
+		{"id":"que0004step00005","type":"text","x":-100,"y":1220,"width":300,"height":240,"text":"## Step 3\n\n读取并综合信息\n检查矛盾标记\n构建带引用的答案","color":"5"},
+		{"id":"que0005step00006","type":"text","x":-100,"y":1520,"width":300,"height":240,"text":"## Step 4\n\n呈现答案\n使用 Obsidian 格式\ncallout 分类信息类型","color":"5"},
+		{"id":"que0006step00007","type":"text","x":-100,"y":1820,"width":300,"height":240,"text":"## Step 5\n\n询问归档有价值答案\n跨页面综合分析\n新洞见 / 常见问答","color":"5"},
+		{"id":"que0007step00008","type":"text","x":-110,"y":2120,"width":320,"height":240,"text":"## Step 6\n\n更新 Memory（如发现新关系）\n`relationships/SUMMARY.md`\n`focus_tracking.md`","color":"5"},
+		{"id":"que0008branch009","type":"text","x":-520,"y":300,"width":320,"height":180,"text":"Memory/focus_tracking.md\n\n了解用户近期关注领域\n帮助确定相关 wiki 分类","color":"3"},
+		{"id":"que0009branch010","type":"text","x":-510,"y":600,"width":320,"height":220,"text":"wiki/_index/\n\n按功能/时间索引\n追踪链接关系\n定位相关页面","color":"3"},
+		{"id":"que0010branch011","type":"text","x":-480,"y":1520,"width":320,"height":220,"text":"wiki/05_综合/\n\n归档有价值答案\n跨领域综合分析\n常见 Q&A","color":"3"},
+		{"id":"que0011branch012","type":"text","x":310,"y":300,"width":300,"height":160,"text":"触发词\n『关于 xxx』『query』\n『wiki 中有没有提到』","color":"6"},
+		{"id":"que0012branch013","type":"text","x":310,"y":1200,"width":300,"height":180,"text":"矛盾检测\n`> [!warning]` 标记\n`[[page-a]] vs [[page-b]]`","color":"6"},
+		{"id":"que0013branch014","type":"text","x":310,"y":2100,"width":320,"height":200,"text":"Memory 更新\n`relationships/SUMMARY.md`\n`focus_tracking.md`\n`stats/{subdirectory}.md`","color":"6"}
 	],
-	"edges": [
-		{
-			"id": "q01",
-			"fromNode": "query-entry",
-			"fromSide": "bottom",
-			"toNode": "query-understand",
-			"toSide": "top",
-			"toEnd": "arrow"
-		},
-		{
-			"id": "q02",
-			"fromNode": "query-understand",
-			"fromSide": "bottom",
-			"toNode": "query-scope",
-			"toSide": "top",
-			"toEnd": "arrow"
-		},
-		{
-			"id": "q03",
-			"fromNode": "query-scope",
-			"fromSide": "bottom",
-			"toNode": "query-search",
-			"toSide": "top",
-			"toEnd": "arrow"
-		},
-		{
-			"id": "q04",
-			"fromNode": "query-search",
-			"fromSide": "bottom",
-			"toNode": "query-collect",
-			"toSide": "top",
-			"toEnd": "arrow"
-		},
-		{
-			"id": "q05",
-			"fromNode": "query-collect",
-			"fromSide": "bottom",
-			"toNode": "query-decision",
-			"toSide": "top",
-			"toEnd": "arrow"
-		},
-		{
-			"id": "q06-yes",
-			"fromNode": "query-decision",
-			"fromSide": "bottom",
-			"toNode": "query-synthesize",
-			"toSide": "top",
-			"toEnd": "arrow",
-			"label": "信息足够"
-		},
-		{
-			"id": "q06-no",
-			"fromNode": "query-decision",
-			"fromSide": "right",
-			"toNode": "query-gap",
-			"toSide": "left",
-			"toEnd": "arrow",
-			"label": "信息不足",
-			"color": "1"
-		},
-		{
-			"id": "q07-yes",
-			"fromNode": "query-synthesize",
-			"fromSide": "bottom",
-			"toNode": "query-archive-decision",
-			"toSide": "top",
-			"toEnd": "arrow"
-		},
-		{
-			"id": "q07-no",
-			"fromNode": "query-gap",
-			"fromSide": "bottom",
-			"toNode": "query-archive-decision",
-			"toSide": "top",
-			"toEnd": "arrow"
-		},
-		{
-			"id": "q08-archive",
-			"fromNode": "query-archive-decision",
-			"fromSide": "left",
-			"toNode": "query-archive",
-			"toSide": "top",
-			"label": "归档",
-			"toEnd": "arrow",
-			"color": "5"
-		},
-		{
-			"id": "q08-output",
-			"fromNode": "query-archive-decision",
-			"fromSide": "right",
-			"toNode": "query-output",
-			"toSide": "top",
-			"label": "直接输出",
-			"toEnd": "arrow",
-			"color": "4"
-		},
-		{
-			"id": "q09a",
-			"fromNode": "query-archive",
-			"fromSide": "bottom",
-			"toNode": "query-log",
-			"toSide": "top",
-			"toEnd": "arrow"
-		},
-		{
-			"id": "q09b",
-			"fromNode": "query-output",
-			"fromSide": "bottom",
-			"toNode": "query-log",
-			"toSide": "top",
-			"toEnd": "arrow"
-		},
-		{
-			"id": "q10",
-			"fromNode": "query-log",
-			"fromSide": "bottom",
-			"toNode": "query-end",
-			"toSide": "top",
-			"toEnd": "arrow"
-		}
+	"edges":[
+		{"id":"quee0000e00001","fromNode":"que0000center0001","fromSide":"bottom","toNode":"que0001step00002","toSide":"top","toEnd":"arrow"},
+		{"id":"quee0001e00002","fromNode":"que0001step00002","fromSide":"bottom","toNode":"que0002step00003","toSide":"top","toEnd":"arrow"},
+		{"id":"quee0002e00003","fromNode":"que0002step00003","fromSide":"bottom","toNode":"que0003step00004","toSide":"top","toEnd":"arrow"},
+		{"id":"quee0003e00004","fromNode":"que0003step00004","fromSide":"bottom","toNode":"que0004step00005","toSide":"top","toEnd":"arrow"},
+		{"id":"quee0004e00005","fromNode":"que0004step00005","fromSide":"bottom","toNode":"que0005step00006","toSide":"top","toEnd":"arrow"},
+		{"id":"quee0005e00006","fromNode":"que0005step00006","fromSide":"bottom","toNode":"que0006step00007","toSide":"top","toEnd":"arrow"},
+		{"id":"quee0006e00007","fromNode":"que0006step00007","fromSide":"bottom","toNode":"que0007step00008","toSide":"top","toEnd":"arrow"},
+		{"id":"quee0007e00008","fromNode":"que0001step00002","fromSide":"left","toNode":"que0008branch009","toSide":"right","label":"读取","color":"3"},
+		{"id":"quee0008e00009","fromNode":"que0002step00003","fromSide":"left","toNode":"que0009branch010","toSide":"right","label":"定位","color":"3"},
+		{"id":"quee0009e00010","fromNode":"que0005step00006","fromSide":"left","toNode":"que0010branch011","toSide":"right","label":"归档","color":"3"},
+		{"id":"quee0010e00011","fromNode":"que0000center0001","fromSide":"right","toNode":"que0011branch012","toSide":"left","label":"触发","color":"6"},
+		{"id":"quee0011e00012","fromNode":"que0003step00004","fromSide":"right","toNode":"que0012branch013","toSide":"left","label":"检测","color":"6"},
+		{"id":"quee0012e00013","fromNode":"que0007step00008","fromSide":"right","toNode":"que0013branch014","toSide":"left","label":"Memory","color":"6"}
 	]
 }

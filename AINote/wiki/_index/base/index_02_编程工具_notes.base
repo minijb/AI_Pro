@@ -5,7 +5,7 @@
 
 filters:
   and:
-    - file.inFolder("wiki/02_编程工具/")
+    - file.inFolder("wiki/notes/02_编程工具/")
 
 properties:
   title:

@@ -5,7 +5,7 @@
 
 filters:
   and:
-    - file.inFolder("wiki/01_语言/")
+    - file.inFolder("wiki/notes/01_语言/")
 
 properties:
   title:

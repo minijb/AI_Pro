@@ -11,7 +11,9 @@ filters:
     - not:
         - file.inFolder("wiki/_index/")
     - not:
-        - file.inFolder("wiki/07_misc/")
+        - file.inFolder("wiki/entities/")
+    - not:
+        - file.inFolder("wiki/notes/07_misc/")
 
 properties:
   title:

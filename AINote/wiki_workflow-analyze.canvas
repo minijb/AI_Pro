@@ -1,0 +1,31 @@
+{
+	"nodes":[
+		{"id":"ana0000center0001","type":"text","x":-150,"y":0,"width":440,"height":120,"text":"# Wiki Analyze 工作流","color":"4"},
+		{"id":"ana0001step00002","type":"text","x":-80,"y":300,"width":300,"height":240,"text":"## Step 1\n\n读取源文档\n从 `raw/` 目录读取\n分析文档结构和内容","color":"5"},
+		{"id":"ana0002step00003","type":"text","x":-80,"y":600,"width":300,"height":260,"text":"## Step 2\n\n生成结构化分析报告\n元数据 / 内容摘要\n关键概念 / 结构拆解\n使用 Obsidian 格式","color":"5"},
+		{"id":"ana0003step00004","type":"text","x":-80,"y":920,"width":300,"height":260,"text":"## Step 3\n\n评估 Wiki 整合价值\nHigh → 推荐 ingest\nMedium → 记录到 questions\nLow → 仅在源摘要中提及","color":"5"},
+		{"id":"ana0004step00005","type":"text","x":-110,"y":1240,"width":360,"height":260,"text":"## Step 4\n\n更新 Memory\n`focus_tracking.md`\n`relationships/SUMMARY.md`\n`relationships/pages/{slug}.md`","color":"5"},
+		{"id":"ana0005step00006","type":"text","x":-80,"y":1560,"width":300,"height":260,"text":"## Step 5\n\n呈现分析结果\n核心摘要 / 关键概念\nWiki 整合建议\n开放问题 / 下一步","color":"5"},
+		{"id":"ana0006step00007","type":"text","x":-80,"y":1880,"width":300,"height":240,"text":"## Step 6\n\n询问后续步骤\n是否执行 ingest\n或仅保存分析报告","color":"5"},
+		{"id":"ana0007branch009","type":"text","x":-530,"y":580,"width":380,"height":220,"text":"分析报告模板\n`wiki/07_misc/analysis-{slug}.md`\n元数据 / 一句话摘要\n内容结构 / 关键概念\nWiki 关系 / 价值评估","color":"3"},
+		{"id":"ana0008branch010","type":"text","x":-530,"y":900,"width":380,"height":200,"text":"价值评估标准\nHigh：新概念多，高价值 → ingest\nMedium：有价值非核心 → questions\nLow：常识或低价值 → 仅摘要","color":"3"},
+		{"id":"ana0009branch011","type":"text","x":-570,"y":1560,"width":420,"height":200,"text":"Memory 更新\n`focus_tracking.md`：主题添加\n`relationships/SUMMARY.md`：新增关系\n`relationships/pages/`：页面关系","color":"3"},
+		{"id":"ana0010branch012","type":"text","x":350,"y":300,"width":300,"height":160,"text":"触发词\n『分析这个』『文档分析』\n『生成报告』『帮我理解』","color":"6"},
+		{"id":"ana0011branch013","type":"text","x":350,"y":580,"width":400,"height":200,"text":"分析深度级别\nQuick（5min）：摘要 + 关键概念\nStandard（15min）：完整报告\nDeep（30min+）：深度报告 + 整合计划","color":"6"},
+		{"id":"ana0012branch014","type":"text","x":350,"y":1820,"width":340,"height":200,"text":"与 Ingest 的关系\nAnalyze 是 Ingest 的前置步骤\nAnalyze → 决定是否 ingest\nIngest → 创建完整 wiki 页面","color":"6"}
+	],
+	"edges":[
+		{"id":"anae0000e00001","fromNode":"ana0000center0001","fromSide":"bottom","toNode":"ana0001step00002","toSide":"top","toEnd":"arrow"},
+		{"id":"anae0001e00002","fromNode":"ana0001step00002","fromSide":"bottom","toNode":"ana0002step00003","toSide":"top","toEnd":"arrow"},
+		{"id":"anae0002e00003","fromNode":"ana0002step00003","fromSide":"bottom","toNode":"ana0003step00004","toSide":"top","toEnd":"arrow"},
+		{"id":"anae0003e00004","fromNode":"ana0003step00004","fromSide":"bottom","toNode":"ana0004step00005","toSide":"top","toEnd":"arrow"},
+		{"id":"anae0004e00005","fromNode":"ana0004step00005","fromSide":"bottom","toNode":"ana0005step00006","toSide":"top","toEnd":"arrow"},
+		{"id":"anae0005e00006","fromNode":"ana0005step00006","fromSide":"bottom","toNode":"ana0006step00007","toSide":"top","toEnd":"arrow"},
+		{"id":"anae0006e00007","fromNode":"ana0002step00003","fromSide":"left","toNode":"ana0007branch009","toSide":"right","label":"模板","color":"3"},
+		{"id":"anae0007e00008","fromNode":"ana0003step00004","fromSide":"left","toNode":"ana0008branch010","toSide":"right","label":"评估","color":"3"},
+		{"id":"anae0008e00009","fromNode":"ana0004step00005","fromSide":"left","toNode":"ana0009branch011","toSide":"right","label":"Memory","color":"3"},
+		{"id":"anae0009e00010","fromNode":"ana0000center0001","fromSide":"right","toNode":"ana0010branch012","toSide":"left","label":"触发","color":"6"},
+		{"id":"anae0010e00011","fromNode":"ana0002step00003","fromSide":"right","toNode":"ana0011branch013","toSide":"left","label":"深度","color":"6"},
+		{"id":"anae0011e00012","fromNode":"ana0005step00006","fromSide":"right","toNode":"ana0012branch014","toSide":"left","label":"Ingest","color":"6"}
+	]
+}

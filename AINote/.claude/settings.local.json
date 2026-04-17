@@ -1,0 +1,11 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(python .claude/skills/json-canvas/scripts/calc_node_size.py --path wiki_workflow-ingest.canvas)",
+      "Bash(rm -f wiki_workflow-ingest_test.canvas)",
+      "Bash(python .claude/skills/json-canvas/scripts/canvas_layout.py wiki_workflow-ingest.canvas --fix --fix-sizes -o wiki_workflow-ingest_test.canvas)",
+      "Bash(python -c ':*)"
+    ]
+  },
+  "skipWebFetchPreflight": true
+}

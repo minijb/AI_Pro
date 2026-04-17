@@ -5,6 +5,7 @@ tools: Read, Glob, Grep
 skills:
   - obsidian-markdown
   - obsidian-bases
+  - wiki-structure
   - wiki-query
 model: inherit
 ---

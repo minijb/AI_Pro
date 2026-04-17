@@ -1,0 +1,31 @@
+# 实体按类型索引
+#
+# 筛选 wiki/entities/ 目录下所有实体和概念
+# 显示：标题、类型、领域、描述、更新时间
+
+filters:
+  and:
+    - file.inFolder("wiki/entities/")
+    - 'type == "entity" or type == "concept"'
+
+properties:
+  title:
+    displayName: 名称
+  entity_type:
+    displayName: 类型
+  description:
+    displayName: 描述
+  updated:
+    displayName: 更新
+
+views:
+  - type: table
+    name: "全部实体"
+    order:
+      - entity_type
+      - title
+    groupBy:
+      property: entity_type
+      direction: ASC
+  - type: card
+    name: "实体卡片"

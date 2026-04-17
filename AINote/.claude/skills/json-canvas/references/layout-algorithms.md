@@ -24,9 +24,34 @@
 HORIZONTAL_SPACING = 320px  // 节点中心之间的最小水平间距
 VERTICAL_SPACING   = 200px  // 节点中心之间的最小垂直间距
 NODE_PADDING       =  20px  // 节点到容器边缘的间距
-GRID_SIZE          =  20px  // 坐标对齐网格（所有坐标为 20 的倍数）
+GRID_SIZE          =  20px  // 尺寸对齐网格（宽高为 20 的倍数）
+POS_GRID           =  10px  // 坐标对齐网格（对齐后坐标为 10 的倍数）
 MIN_NODE_WIDTH     = 220px  // 最小节点宽度
 MIN_NODE_HEIGHT    = 100px  // 最小节点高度
+MAX_NODE_WIDTH     = 600px  // 最大节点宽度
+```
+
+### 字符像素宽度（Obsidian 校准 v2）
+
+```
+CJK 字符:       20px    # 中日韩 + 全角标点
+英文/数字:      11px    # 拉丁字母
+Emoji:          28px    # 表情符号
+半角标点:        7px    # , . ; :
+空格:            5px
+路径符号:        9px    # . / - _ :
+```
+
+### 行高
+
+```
+# Heading 1:     64px    # 含 margin
+## Heading 2:    56px
+### Heading 3:   46px
+#### Heading 4:  38px
+普通文本:        34px
+代码块行:        28px
+空行:            18px
 ```
 
 ---
@@ -608,6 +633,80 @@ def validate_layout(nodes):
 2. **缩小节点**：减少 width 或 height（内容允许时）
 3. **重新排列**：调整节点层级关系
 4. **拆分布局**：将大组拆分为多个小组
+
+---
+
+## 对齐规则
+
+`canvas_layout.py` 脚本自动执行，支持分支/合并节点拓扑。
+
+### 核心原则
+
+- **深度分层处理**：按最长路径深度分层（0→1→2），深层节点永远在所有祖先之后放置
+- **拓扑感知的 y 坐标**：`y(node) = max(所有已放置父节点底部) + VERTICAL_GAP(80px)`
+- **分支组水平排列**：同一父节点下、fromSide 不同的多个子节点（left+bottom+right）作为兄弟水平排列
+- **主列居中**：以入口节点（深度 0 最宽者）为基准居中对齐
+- **不改变边连接**：只调整 x/y，不修改 edge
+
+### 垂直流对齐算法
+
+```
+Phase 1 — 拓扑分层确定 y：
+  1. 按最长路径深度分层（DFS）
+  2. 同层按 x 从左到右排序
+  3. 每层内 y(node) = max(已放置父节点底部) + 80px
+  4. 菱形/多路径汇合：取 max 支持自然汇聚
+
+Phase 2 — x 坐标：
+  1. 主流程节点：以入口节点中心为基准居中对齐
+  2. 分支组（≥2 个不同 fromSide 子节点）：
+       left → bottom → right 从左到右排列
+       以父节点中心为基准
+```
+
+### 分支组识别
+
+```python
+# 同一父节点有多个子节点，且来自不同 fromSide
+# → 识别为分支组，水平排列
+if len(siblings) >= 2 and len(set(side for _, side in siblings)) >= 2:
+    # left, bottom, right 各放一行，从左到右排列
+```
+
+### 垂直流示例
+
+query canvas 归档决策区块：
+```
+depth=3:   query-archive  ← left     query-output  ← right
+                 (归档优质答案)          (直接输出答案)
+depth=4:                 query-log ← 合并节点
+                 query-end
+```
+
+### 水平流对齐
+
+同一行节点共享 `center_y`：
+
+```
+target_cy = 最高节点的 center_y
+node.y = snap_to_10(target_cy - node.height / 2)
+```
+
+### 树形对齐
+
+1. 同层子节点共享 y 坐标（**顶部对齐**）
+2. 子节点组的 center_x = 父节点的 center_x（**居中**）
+3. 子节点之间间距 ≥ 40px
+
+### MindMap 对齐
+
+- 右侧分支：同层节点**左对齐**（共享 x）
+- 左侧分支：同层节点**右对齐**（共享 x + width）
+
+### Grid 对齐
+
+- Group 内节点：**左对齐**（共享 x）
+- 跨 Group 同行：**顶部对齐**（共享 y）
 
 ---
 

@@ -5,6 +5,7 @@ tools: Read, Write
 skills:
   - obsidian-markdown
   - obsidian-bases
+  - wiki-structure
   - wiki-analyze
 model: inherit
 ---

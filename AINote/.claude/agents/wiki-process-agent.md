@@ -6,6 +6,7 @@ skills:
   - obsidian-markdown
   - obsidian-bases
   - json-canvas
+  - wiki-structure
   - wiki-process
 model: inherit
 ---

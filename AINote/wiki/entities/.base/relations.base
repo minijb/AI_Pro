@@ -1,0 +1,32 @@
+# 关系索引
+#
+# 筛选 wiki/entities/relations/ 目录下所有关系定义
+# 显示：标题、关系类型、来源、目标
+
+filters:
+  and:
+    - file.inFolder("wiki/entities/relations/")
+    - 'type == "relation"'
+
+properties:
+  title:
+    displayName: 关系
+  relation_type:
+    displayName: 类型
+  source:
+    displayName: 来源
+  target:
+    displayName: 目标
+
+views:
+  - type: table
+    name: "关系列表"
+    order:
+      - relation_type
+      - source
+    groupBy:
+      property: relation_type
+      direction: ASC
+  - type: board
+    name: "关系看板"
+    groupBy: relation_type

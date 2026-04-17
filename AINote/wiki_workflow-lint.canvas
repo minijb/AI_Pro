@@ -1,0 +1,33 @@
+{
+	"nodes":[
+		{"id":"lin0000center0001","type":"text","text":"# Wiki Lint 工作流","x":-150,"y":0,"width":380,"height":120,"color":"4"},
+		{"id":"lin0001step00002","type":"text","text":"## Step 1\n\n全面扫描 Wiki 页面\n收集 frontmatter `updated`\n收集所有 wikilink 引用和 tags","x":-130,"y":300,"width":340,"height":240,"color":"5"},
+		{"id":"lin0002step00003","type":"text","text":"## Step 2\n\n矛盾检测\n同一概念不同定义\n时间线不一致\n标记：`> [!bug]`","x":-110,"y":600,"width":300,"height":260,"color":"5"},
+		{"id":"lin0003step00004","type":"text","text":"## Step 3\n\n过时检测\n时间敏感声明检查\n超过 30 天无更新\n建议添加时间戳","x":-110,"y":920,"width":300,"height":260,"color":"5"},
+		{"id":"lin0004step00005","type":"text","text":"## Step 4\n\n孤立页面检测\n无入站 wikilink\n建议添加至少 1 个相关链接","x":-110,"y":1240,"width":300,"height":240,"color":"5"},
+		{"id":"lin0005step00006","type":"text","text":"## Step 5\n\n缺失交叉引用检测\n相关页面未双向链接\n源页面未引用相关概念","x":-110,"y":1540,"width":300,"height":240,"color":"5"},
+		{"id":"lin0006step00007","type":"text","text":"## Step 6\n\n生成健康报告\n`wiki/07_misc/lint-report-{date}.md`\n使用 callout 分类问题类型","x":-170,"y":1840,"width":420,"height":240,"color":"5"},
+		{"id":"lin0007step00008","type":"text","text":"## Step 7\n\n更新 Memory\n`Memory/stats/SUMMARY.md`\n`Memory/stats/{subdirectory}.md`","x":-150,"y":2140,"width":380,"height":240,"color":"5"},
+		{"id":"lin0008step00009","type":"text","text":"## Step 8\n\n更新 `Memory/reports.md`\n追加 lint 报告摘要\n记录扫描结果和问题数量","x":-110,"y":2440,"width":300,"height":240,"color":"5"},
+		{"id":"lin0010branch010","type":"text","text":"孤立页面标记\n`> [!warning]` 无入站链接\n建议：`→ link to [[related]]`","x":-490,"y":1220,"width":320,"height":160,"color":"3"},
+		{"id":"lin0011branch011","type":"text","text":"lint-report-{date}.md\n\n摘要：页面数/矛盾/孤立/过时\n按类别分类问题\n每个问题含修复建议","x":-550,"y":1820,"width":320,"height":220,"color":"3"},
+		{"id":"lin0012branch012","type":"text","text":"触发词\n『整理 wiki』『lint』\n『健康检查』『维护』","x":310,"y":300,"width":300,"height":160,"color":"6"},
+		{"id":"lin0013branch013","type":"text","text":"执行频率\n每 5 次 ingest：快速检查\n每月：全面检查\n按需：用户请求","x":310,"y":2440,"width":300,"height":200,"color":"6"},
+		{"id":"lin0009branch009","type":"text","text":"矛盾标记格式\n`> [!bug]` 矛盾\n`[[page-a]] ↔ [[page-b]]`","x":-520,"y":600,"width":320,"height":160,"color":"3"}
+	],
+	"edges":[
+		{"id":"line0000e00001","fromNode":"lin0000center0001","fromSide":"bottom","toNode":"lin0001step00002","toSide":"top"},
+		{"id":"line0001e00002","fromNode":"lin0001step00002","fromSide":"bottom","toNode":"lin0002step00003","toSide":"top"},
+		{"id":"line0002e00003","fromNode":"lin0002step00003","fromSide":"bottom","toNode":"lin0003step00004","toSide":"top"},
+		{"id":"line0003e00004","fromNode":"lin0003step00004","fromSide":"bottom","toNode":"lin0004step00005","toSide":"top"},
+		{"id":"line0004e00005","fromNode":"lin0004step00005","fromSide":"bottom","toNode":"lin0005step00006","toSide":"top"},
+		{"id":"line0005e00006","fromNode":"lin0005step00006","fromSide":"bottom","toNode":"lin0006step00007","toSide":"top"},
+		{"id":"line0006e00007","fromNode":"lin0006step00007","fromSide":"bottom","toNode":"lin0007step00008","toSide":"top"},
+		{"id":"line0007e00008","fromNode":"lin0007step00008","fromSide":"bottom","toNode":"lin0008step00009","toSide":"top"},
+		{"id":"line0008e00009","fromNode":"lin0002step00003","fromSide":"left","toNode":"lin0009branch009","toSide":"right","color":"3","label":"标记"},
+		{"id":"line0009e00010","fromNode":"lin0004step00005","fromSide":"left","toNode":"lin0010branch010","toSide":"right","color":"3","label":"标记"},
+		{"id":"line0010e00011","fromNode":"lin0006step00007","fromSide":"left","toNode":"lin0011branch011","toSide":"right","color":"3","label":"输出"},
+		{"id":"line0011e00012","fromNode":"lin0000center0001","fromSide":"right","toNode":"lin0012branch012","toSide":"left","color":"6","label":"触发"},
+		{"id":"line0012e00013","fromNode":"lin0007step00008","fromSide":"right","toNode":"lin0013branch013","toSide":"left","color":"6","label":"频率"}
+	]
+}

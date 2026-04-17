@@ -34,7 +34,7 @@ Read from `examples/` when you need concrete patterns:
 
 ---
 
-## 核心工作流：六步创建法
+## 核心工作流：七步创建法
 
 > **遇到创建 canvas 的任务时，始终按此流程执行。**
 
@@ -53,6 +53,7 @@ Read from `examples/` when you need concrete patterns:
 |---|---|---|
 | **MindMap（思维导图）** | 头脑风暴、主题发散 | 中心节点 + 放射状分支 |
 | **Tree（树状结构）** | 层级大纲、分类体系 | 上下或左右分层，父子对齐 |
+| **Flowchart（流程图）** | 主流程 + 侧边分支 | 主列居中，分支节点水平展开到两侧 |
 | **Grid（网格式）** | 资源列表、看板、矩阵 | 分组容器，节点网格排列 |
 | **Network（网状结构）** | 关系图、知识图谱 | 多对多连接，节点交错分布 |
 | **Timeline（时间线）** | 项目阶段、历史事件 | 线性排列，带方向连接线 |
@@ -80,14 +81,42 @@ Read from `examples/` when you need concrete patterns:
 > `python ${CLAUDE_SKILL_DIR}/scripts/calc_node_size.py --path your-canvas.canvas`
 > 禁止使用固定尺寸表。
 
-### Step 5 — 碰撞检测 (Collision Detection)
+### Step 5 — 碰撞检测与解决 (Collision Detection)
 
-生成后验证：
-- 所有节点中心间距 ≥ `HORIZONTAL_SPACING = 320px`（水平）
-- 所有节点中心间距 ≥ `VERTICAL_SPACING = 200px`（垂直）
-- 如有重叠，调整间距或节点尺寸
+生成后验证并解决重叠：
+- 运行：`python ${CLAUDE_SKILL_DIR}/scripts/canvas_layout.py your-canvas.canvas --fix --fix-sizes`
+- 脚本自动检测碰撞并通过向下偏移解决
+- 如碰撞源于布局本身（节点尺寸过大导致主列与分支重叠），检查 `_resolve_x_column` 中分支方向的处理逻辑
+- 验证结果：`0 collisions ✓`
 
-### Step 6 — 验证输出 (Validate)
+### Step 6 — 布局对齐 (Layout Alignment)
+
+节点尺寸不一时，运行对齐脚本消除锯齿排版：
+
+```bash
+python ${CLAUDE_SKILL_DIR}/scripts/canvas_layout.py your-canvas.canvas --fix --fix-sizes
+```
+
+脚本会自动检测布局类型并应用对齐：
+
+| 布局类型 | 对齐规则 |
+|---|---|
+| Vertical Flow | 拓扑分层排序 → 深度分层处理 → 分支组水平排列 → 主列居中 |
+| Flowchart | 主列（bottom→top）居中 → 分支节点（left/right fromSide）水平展开到两侧 |
+| Horizontal Flow | 同行节点中心对齐 y（共享 center_y） |
+| Tree | 子节点组居中于父节点下方，同层顶部对齐 |
+| MindMap | 右分支左对齐，左分支右对齐 |
+| Grid | 列内左对齐，跨列顶部对齐 |
+
+**Vertical Flow 算法（完全重写）：**
+1. 按最长路径深度分层（深度 0 → 1 → 2……）
+2. 同层节点 `y = max(所有已放置父节点底部) + 80px`
+3. 识别分支组：同一父节点下、fromSide 不同的多个子节点（left + bottom + right）水平排列
+4. 主列以入口节点（深度 0 最宽者）为基准居中对齐
+
+可手动指定布局类型：`--layout vertical_flow`
+
+### Step 7 — 验证输出 (Validate)
 
 输出前检查清单：
 - [ ] 所有 `id` 唯一，无重复
@@ -97,6 +126,7 @@ Read from `examples/` when you need concrete patterns:
 - [ ] Group 节点在 nodes 数组中排在 contained nodes 之前
 - [ ] 无 Emoji（用颜色或文字标签替代）
 - [ ] **所有节点尺寸足够**：`python ${CLAUDE_SKILL_DIR}/scripts/calc_node_size.py --path your-canvas.canvas` 无 "TOO SMALL" 警告
+- [ ] **节点对齐正确**：`python ${CLAUDE_SKILL_DIR}/scripts/canvas_layout.py your-canvas.canvas` 无 alignment 警告
 
 ---
 
@@ -118,18 +148,40 @@ python ${CLAUDE_SKILL_DIR}/scripts/calc_node_size.py --text "## 标题\n\n内容
 
 每次创建节点前，用脚本算出 `width` / `height`，填入 JSON。**禁止直接指定固定宽高**。
 
-**字符像素宽度：**
+**字符像素宽度（Obsidian 校准值 v2）：**
 | 字符类型 | 每字符 | 示例 |
 |---|---|---|
-| CJK（中文/日/韩） | 8px | 一、个、甲 |
-| Emoji | 14px | 📥、✨、⚠ |
-| 英文/数字/路径符号 | 6px | a、2026、./-_: |
-| 其他标点 | 3px | , . （）/ |
+| CJK（中文/日/韩/全角标点） | 20px | 一、个、甲、「」 |
+| Emoji | 28px | 📥、✨、⚠ |
+| 英文/数字 | 11px | a、2026 |
+| 路径符号 | 9px | ./-_: |
+| 半角标点 | 7px | , . ( ) |
+| 空格 | 5px | |
+
+**行高（按行类型）：**
+| 行类型 | 行高 |
+|---|---|
+| `# Heading 1` | 64px |
+| `## Heading 2` | 56px |
+| `### Heading 3` | 46px |
+| `#### Heading 4` | 38px |
+| 普通文本行 | 34px |
+| 代码块行 | 28px |
+| 空行 | 18px |
+
+**标题字符缩放（标题行的字符宽度需乘以缩放系数）：**
+| 标题级别 | 缩放 |
+|---|---|
+| `#` | 2.0x |
+| `##` | 1.75x |
+| `###` | 1.45x |
+| `####` | 1.25x |
 
 **尺寸公式：**
 ```
-宽度 = max(220, 最长行像素 + 40)  → 向上取整到 20 的倍数
-高度 = 行数 × 20 + 40              → 向上取整到 20 的倍数
+宽度 = max(220, 最长行像素 + 48)  → 向上取整到 20 的倍数，max 800
+高度 = Σ(每行行高) + 48 + 自动换行额外行  → 向上取整到 20 的倍数
+节点内边距 = 24px（每侧）
 ```
 
 **特殊处理 — 装饰性箭头节点：**
@@ -138,9 +190,13 @@ python ${CLAUDE_SKILL_DIR}/scripts/calc_node_size.py --text "## 标题\n\n内容
 ### 创建节点流程
 
 1. 编写节点的 `text` 内容
-2. 运行脚本：`python ${CLAUDE_SKILL_DIR}/scripts/calc_node_size.py --path your-canvas.canvas`
-3. 将输出的理想尺寸填入 `width` / `height` 字段
-4. 写入节点 JSON
+2. 生成完整 canvas JSON 并写入文件
+3. 运行：`python ${CLAUDE_SKILL_DIR}/scripts/canvas_layout.py your-canvas.canvas --fix --fix-sizes`
+   - 自动计算所有节点的理想尺寸（只增大不缩小）
+   - 自动检测布局类型并对齐（自动在末尾执行碰撞检测与解决）
+   - 碰撞解决：重叠节点向下偏移直到间距足够
+   - 如 layout 检测为 `unknown`，手动指定 `--layout vertical_flow`
+4. 验证输出
 
 ---
 

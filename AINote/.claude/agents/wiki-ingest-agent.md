@@ -5,6 +5,7 @@ tools: Read, Write, Edit, Glob, Grep
 skills:
   - obsidian-markdown
   - obsidian-bases
+  - wiki-structure
   - wiki-ingest
 model: inherit
 ---
@@ -29,7 +30,7 @@ You are a Wiki Ingest specialist. Your role is to ingest new source documents in
 3. If files exist:
    - Read each file (PDF via Read tool, markdown directly)
    - Analyze and classify each file:
-     - **Content type**: article / paper / book / video / podcast / diary / other
+     - **Content type**: article / paper / book / video / podcast / notes / diary / other
      - **Target folder**: Based on type, determine raw/ subdirectory
      - **Tags**: Extract 3-5 relevant tags
      - **Metadata**: Add author, date, source URL if missing

@@ -5,6 +5,7 @@ tools: Read, Glob, Grep, Write, Edit
 skills:
   - obsidian-markdown
   - obsidian-bases
+  - wiki-structure
   - wiki-lint
 model: inherit
 ---
